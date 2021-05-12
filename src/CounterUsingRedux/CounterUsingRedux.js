@@ -1,18 +1,37 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
 import { increment, decrement } from '../modules/redux/counter';
+// import * as Font from 'expo-font';
+// import {AppLoading} from 'expo';
+
+
+// const fetchFonts = () => {
+//   return Font.loadAsync({
+//       'headsome-modif.regular': require('../assets/fonts/headsome-modif.regular.ttf')
+//   });
+// };
 
 const CounterUsingRedux = () => {
+    // const [dataLoaded, setDataLoaded] = useState(false);
+    // if(!dataLoaded) {
+    //   return (
+    //     <AppLoading
+    //     startAsync={fetchFonts}
+    //     onFinish={() => setDataLoaded(true)}
+    //     />
+    //   );
+    // };
+
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
 
     return (
         <View style={StyleSheet.container}>
         <View />
-         <Text style={styles.text}>Counter: {counter}</Text>
+         <Text style={styles.text}>People Counter: {counter}</Text>
          <SafeAreaView style={styles.buttonsHolder}>
            <FloatingButton
                 onPress={() => dispatch(decrement())}
@@ -29,21 +48,21 @@ const CounterUsingRedux = () => {
       </SafeAreaView>
     </View>
 
-    )
+    );
 };
 
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      justifyContent: 'space-between'
+ 
     },
 
     buttonsHolder: {
         flexDirection: 'row',
         alignSelf: 'stretch',
-        paddingHorizontal: 25,
-        paddingBottom: 10,
+        padding: 25,
         justifyContent: 'space-between',
         alignItems: 'center'
       },
@@ -83,6 +102,7 @@ const styles = StyleSheet.create({
     
       text: {
         fontSize: 25,
+        fontFamily: 'Roboto',
         minWidth: 100,
         alignSelf: 'stretch',
         textAlign: 'center',
