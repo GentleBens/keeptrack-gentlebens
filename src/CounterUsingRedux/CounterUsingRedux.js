@@ -1,37 +1,25 @@
-import React, {useState} from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import React from 'react';
+import { Text, View, StyleSheet} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
 import { increment, decrement } from '../modules/redux/counter';
-// import * as Font from 'expo-font';
-// import {AppLoading} from 'expo';
+//import {images} from '../image';
 
 
-// const fetchFonts = () => {
-//   return Font.loadAsync({
-//       'headsome-modif.regular': require('../assets/fonts/headsome-modif.regular.ttf')
-//   });
-// };
+
 
 const CounterUsingRedux = () => {
-    // const [dataLoaded, setDataLoaded] = useState(false);
-    // if(!dataLoaded) {
-    //   return (
-    //     <AppLoading
-    //     startAsync={fetchFonts}
-    //     onFinish={() => setDataLoaded(true)}
-    //     />
-    //   );
-    // };
+
 
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
 
     return (
         <View style={StyleSheet.container}>
-        <View />
+       
          <Text style={styles.text}>People Counter: {counter}</Text>
+    
          <SafeAreaView style={styles.buttonsHolder}>
            <FloatingButton
                 onPress={() => dispatch(decrement())}
@@ -45,7 +33,12 @@ const CounterUsingRedux = () => {
                 type='ADD'
                 btnStyle={styles.addBtn}
             />
+       
       </SafeAreaView>
+    
+      {/* <Image 
+       style={{ width: 100, height: 100 }}
+      source={images} /> */}
     </View>
 
     );
@@ -102,19 +95,22 @@ const styles = StyleSheet.create({
     
       text: {
         fontSize: 25,
-        fontFamily: 'Roboto',
+        //fontFamily: 'Oswald',
         minWidth: 100,
         alignSelf: 'stretch',
         textAlign: 'center',
         textShadowColor: 'gray',
         textShadowOffset: { width: 0, height: 1 },
         textShadowRadius: 3
-      }
+      },
+      
     });
     
     export default CounterUsingRedux;
 
+    
+    // export default App;
 
-    // useSelector hook is responsible to fetch specific reducer's state from the store
-        // fetching counter state from custom counter reducer
-    // useDispatch hook allows for dispatch actions (i.e increment & decrement) to reducers
+    // // useSelector hook is responsible to fetch specific reducer's state from the store
+    //     // fetching counter state from custom counter reducer
+    // // useDispatch hook allows for dispatch actions (i.e increment & decrement) to reducers
