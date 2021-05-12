@@ -5,15 +5,13 @@ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CounterUsingRedux from './CounterUsingRedux';
-import counterReducer from '../modules/redux/counter/index';
+import counterReducer from '../modules/redux/counter';
 
 const rootReducers = combineReducers({
     counter: counterReducer
 });
 
-const store = () => {
-    return createStore(rootReducers);
-}
+const store = createStore(rootReducers);
 
 const Stack = createStackNavigator();
 
@@ -31,7 +29,8 @@ export default () => {
                         headerTitleAlign: 'center',
                         headerTintColor: 'white',
                         headerStyle: {
-                            backgroundColor: '#3f51b5'
+                            backgroundColor: '#3f51b5',
+                            fontFamily: 'Roboto'
                         } 
                     }}
                     />
