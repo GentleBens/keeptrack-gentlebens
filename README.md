@@ -1,4 +1,4 @@
-<h1 align="center"> People Counter App for Gentle Ben's Brewery in Tucson, AZ
+<h1 align="center"> People Counter / Chat App for Gentle Ben's Brewery in Tucson, AZ
 
 ![logo](assets/download.png)
 
@@ -7,6 +7,12 @@
 **Using Redux React Native**
 
 Features
+
+- Foot Traffic Counter
+
+- Communication / chat
+
+- Contacts List
 
 Author: Stacy Burris
 
