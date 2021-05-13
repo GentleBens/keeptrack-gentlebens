@@ -1,6 +1,6 @@
 <h1 align="center"> People Counter / Chat App for Gentle Ben's Brewery in Tucson, AZ
 
-![logo](assets/download.png)
+![logo](src/assets/image/download.png)
 
 </h1>
 
@@ -14,14 +14,18 @@ Features
 
 - Contacts List
 
+- 2 page navigation
+
 Author: Stacy Burris
 
-- Created to track daily traffic
+- Created to track daily traffic and make for an easy platform for communication from all staff
 
 Technologies:
 
+- React
 - React Native
 - Redux
+- Expo
 
 Links & References:
 
@@ -30,6 +34,8 @@ Links & References:
 - [Pressable](https://reactnative.dev/docs/pressable)
 
 - [createStackNavigator](https://reactnavigation.org/docs/stack-navigator/)
+
+- [React Navigation](https://reactnavigation.org/docs/navigation-prop/)
 
 Contact
 
