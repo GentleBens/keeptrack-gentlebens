@@ -14,10 +14,9 @@ const CounterScreen = ({ navigation: { navigate }}) => {
     return (
         <View style={StyleSheet.container}>
  <Button
-        
         onPress={() =>
-          navigate('DisplayContacts', { title: 'Contact List'})}
-          title="Go to Contact Screen"
+          navigate('Contacts', { title: 'Contact List'})}
+          title="Go to Contact List"
         
       />  
  {/* <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" /> */}
@@ -58,7 +57,7 @@ const styles = StyleSheet.create({
     buttonsHolder: {
         flexDirection: 'row',
         alignSelf: 'stretch',
-        padding: 25,
+        padding: 30,
         justifyContent: 'space-between',
         alignItems: 'center'
       },
@@ -97,8 +96,8 @@ const styles = StyleSheet.create({
       },
     
       text: {
-        fontSize: 25,
-        //fontFamily: 'Oswald',
+        fontSize: 20,
+        paddingTop: 30,
         minWidth: 100,
         alignSelf: 'stretch',
         textAlign: 'center',

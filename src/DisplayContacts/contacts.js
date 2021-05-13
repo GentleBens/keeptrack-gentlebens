@@ -1,12 +1,15 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, View, Button, FlatList, Linking } from 'react-native';
+import { StyleSheet, TextInput, View, Button, FlatList, Linking } from 'react-native';
 import * as Contacts from 'expo-contacts';
 //import FocusAwareStatusBar from '../Focus/focus';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function DisplayContacts({navigation, route}) {
   const [contacts, setContacts] = useState([]);
   const [permissions, setPermissions] = useState(false);
+  const [filterContacts, setFilterContacts] = useState({});
+  //const [memory, setMemory] = useState([]);
 
   const call = (contact) => {
     // call the contact
@@ -25,6 +28,17 @@ export default function DisplayContacts({navigation, route}) {
     setContacts(contactList.data);
   }
 
+const searchContacts = async (value) => {
+  const filterThrough = filterContacts.filter(contact => {
+    let lowerCaseContacts = (
+      contact.firstName + ' ' + contact.lastName ).toLowerCase();
+      let searchTermLowercase = value.toLowerCase();
+      return lowerCaseContacts.indexOf(searchTermLowercase) > -1;
+  
+  });
+setFilterContacts(filterThrough.data);
+}  
+
   const getPermissions = async () => {
     // const { status } = await Permissions.askAsync(Permissions.CONTACTS);
     const { status } = await Contacts.requestPermissionsAsync();
@@ -32,7 +46,8 @@ export default function DisplayContacts({navigation, route}) {
     if (status === 'granted') {
       setPermissions(true);
     } else { setPermissions(false) }
-  }
+
+  };
 
   useEffect(() => {
     getPermissions();
@@ -44,10 +59,24 @@ export default function DisplayContacts({navigation, route}) {
     <> 
      <View style={StyleSheet.container}>
    {/* <FocusAwareStatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />      */}
-        {/* <SafeAreaView style={[styles.container, { backgroundColor: '#ecf0f1' }]}> */}
-  
-        <Button title="Go Back" onPress={() => navigation.goBack()}/>
-
+       <SafeAreaView style={{ backgroundColor: '#ecf0f1' }}/>
+    <TextInput 
+  placeholder='Search By Name'
+  placeholderTextColor='#dddddd'
+  style={{
+    backgroundColor: '#2f363c',
+    // height: 50,
+    // fontSize: 36,
+    // padding: 10,
+    // color: 'white',
+    // borderBottomWidth: 0.5,
+    // borderBottomColor: '#7d90a0'
+  }}
+  onChangeText={value => searchContacts(value)}
+  />
+    
+       <Button title='Go Back' onPress={() => navigation.goBack()}/>
+ 
           <Button
             style={styles.button}
              onPress={showContacts}
@@ -59,7 +88,7 @@ export default function DisplayContacts({navigation, route}) {
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <Button title={item.name} onPress={() => call(item)} />}
         ></FlatList>
-   {/* </SafeAreaView> */}
+ 
       </View >
     </>
   );
@@ -68,12 +97,19 @@ export default function DisplayContacts({navigation, route}) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6495ed',
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    marginTop:30,
   },
-  button: {
-    backgroundColor: 'black',
-
-  }
+  phones: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  contact_details: {
+    textAlign: 'center',
+    color: 'red',
+    margin: 10,
+  },
 });

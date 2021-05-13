@@ -23,14 +23,16 @@ export default function App(){
       <NavigationContainer>
           <Stack.Navigator>
             <Stack.Screen
-            name='CounterScreen'
+            name='Home'
             options={{title: 'Gentle Ben\'s People Counter'}}
             component={CounterScreen}
             />
             <Stack.Screen 
-            name='DisplayContacts' 
+            name='Contacts' 
             component={DisplayContacts} 
-            options={({route}) => ({title: route.params.dispatch})}
+            options={({ route }) => ({title: 'Contact List'})}
+        
+          
             />  
           </Stack.Navigator>
         </NavigationContainer>
