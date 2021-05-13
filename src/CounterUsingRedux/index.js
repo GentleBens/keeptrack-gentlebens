@@ -27,7 +27,7 @@ export default () => {
                     options={{
                         headerTitle: () => (
                             <Image
-                            style={{width: 60, height: 40}}
+                            style={{width: 50, height: 30}}
                             source={require('../assets/image/download.png')}
                             />                     
                                    ),
