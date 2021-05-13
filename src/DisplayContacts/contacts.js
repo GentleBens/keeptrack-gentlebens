@@ -2,9 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View, Button, FlatList, Linking } from 'react-native';
 import * as Contacts from 'expo-contacts';
+//import FocusAwareStatusBar from '../Focus/focus';
 
-
-export default function DisplayContacts() {
+export default function DisplayContacts({navigation, route}) {
   const [contacts, setContacts] = useState([]);
   const [permissions, setPermissions] = useState(false);
 
@@ -41,19 +41,25 @@ export default function DisplayContacts() {
 
 
   return (
-    <>
-      <View style={styles.container}>
+    <> 
+     <View style={StyleSheet.container}>
+   {/* <FocusAwareStatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />      */}
+        {/* <SafeAreaView style={[styles.container, { backgroundColor: '#ecf0f1' }]}> */}
+  
+        <Button title="Go Back" onPress={() => navigation.goBack()}/>
+
           <Button
             style={styles.button}
-            onPress={showContacts}
-            title="Contacts"
+             onPress={showContacts}
+            title="Display Contacts"
           ></Button>
- 
+
         <FlatList
             data={contacts}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <Button title={item.name} onPress={() => call(item)} />}
         ></FlatList>
+   {/* </SafeAreaView> */}
       </View >
     </>
   );
