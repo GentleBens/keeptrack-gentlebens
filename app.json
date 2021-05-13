@@ -4,9 +4,9 @@
     "slug": "keeptrack-gentlebens",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/image/icon.png",
+    "icon": "./src/assets/image/adaptive-icon.png",
     "splash": {
-      "image": "./assets/image/splash.png",
+      "image": "./src/assets/image/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/image/adaptive-icon.png",
+        "foregroundImage": "./src/assets/image/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       }
     },

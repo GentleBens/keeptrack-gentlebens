@@ -1,40 +1,47 @@
 import React from 'react';
-import { Text, View, StyleSheet} from 'react-native';
+import { Text, View, StyleSheet, Button } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
 import { increment, decrement } from '../modules/redux/counter';
-//import {images} from '../image';
+//import FocusAwareStatusBar from '../Focus/focus';
+//import DisplayContacts from '../DisplayContacts/contacts';
 
-
-
-
-const CounterUsingRedux = () => {
-
-
+const CounterScreen = ({ navigation: { navigate }}) => {
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
 
     return (
         <View style={StyleSheet.container}>
-       
+ <Button
+        
+        onPress={() =>
+          navigate('DisplayContacts', { title: 'Contact List'})}
+          title="Go to Contact Screen"
+        
+      />  
+ {/* <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" /> */}
          <Text style={styles.text}>People Counter: {counter}</Text>
-    
+
+         
          <SafeAreaView style={styles.buttonsHolder}>
+ 
            <FloatingButton
+                // style={styles.buttonsHolder}
                 onPress={() => dispatch(decrement())}
                 disabled={counter <= 0}
                 type='REMOVE'
                 btnStyle={counter <= 0 ? styles.disabledRemoveBtn : styles.removeBtn}
            />
-
             <FloatingButton
+                // style={styles.buttonsHolder}
                 onPress={() => dispatch(increment())}
                 type='ADD'
                 btnStyle={styles.addBtn}
-            />
-       
-      </SafeAreaView>
+            /> 
+     
+         </SafeAreaView>
+
     </View>
 
     );
@@ -102,7 +109,7 @@ const styles = StyleSheet.create({
       
     });
     
-    export default CounterUsingRedux;
+    export default CounterScreen;
 
     
     // export default App;
