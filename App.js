@@ -7,19 +7,6 @@ import store from './src/CounterUsingRedux/index';
 import { StatusBar, Image, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-//////
-// import io from 'socket.io-client';
-// const socket = io('http://localhost:5000/');
-// const onChange = (e) => {
-//   socket.emit('typing', {username:username})
-// }
-// useEffect(() => {
-//   socket.on('someoneTyping', (user) => {
-//     setTyping(user.username + 'is typing...') 
-//   })
-// },[])
-
-//////
 
 import { subscribeToTimer } from './src/api';
 const Stack = createStackNavigator();
@@ -40,25 +27,11 @@ state = {
 };
 
 
-
-// const Stack = createStackNavigator();
-// export default function App(){
-// const [timestamp, setTimestamp] = useState('no timestamp yet');
-
-// // setTimestamp(timestamp);
-
-// const handleTimestamp = (props) => {
-// setTimestamp(subscribeToTimer)
-// }
-
 render(){
    return (
       <Provider store={store}>
-            
-
       <StatusBar translucent backgroundColor='transparent' barStyle='light-content'
       />   
-         
            {/* <Image
     style={{width: 50, height: 30}}
     source={require('./src/assets/image/download.png')}/>     */}
@@ -76,16 +49,9 @@ render(){
             component={DisplayContacts} 
             options={({ route }) => ({title: 'Contact List'})}
             />  
-           
-                 
+  
           </Stack.Navigator>
-
-            
-            
         </NavigationContainer>
-      
-     
-
         </SafeAreaProvider>
          <Text>'This is the value of the timer timestamp:' {this.state.timestamp} </Text>
   
