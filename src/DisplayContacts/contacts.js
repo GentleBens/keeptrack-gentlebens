@@ -33,8 +33,14 @@ export default function DisplayContacts({navigation, route}) {
     })
     
     )}
-
-
+    
+//const [timestamp, setTimestamp] = useState('no timestamp yet');
+    // const handleTimestamp = () => {
+    //   console.log('whats my props', props);
+    //   let newSubscriber = subscribeToTimer(() => {
+    //     setTimestamp(newSubscriber.data);
+    // });
+    // }
 // const searchContacts = async (value) => {
 //   const filterThrough = filterContacts.filter(contact => {
 //     let lowerCaseContacts = (
