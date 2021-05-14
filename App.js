@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import CounterScreen from './src/CounterUsingRedux/CounterScreen';
@@ -7,7 +7,18 @@ import store from './src/CounterUsingRedux/index';
 import { StatusBar, Image } from 'react-native';
 import { Provider } from 'react-redux';
 //import { SafeAreaProvider } from 'react-native-safe-area-context';
+//////
+const socket = io('http://localhost:5000/');
+const onChange = (e) => {
+  socket.emit('typing', {username:username})
+}
+useEffect(() => {
+  socket.on('someoneTyping', (user) => {
+    setTyping(user.username + 'is typing...') 
+  })
+},[])
 
+//////
 
 const Stack = createStackNavigator();
 
