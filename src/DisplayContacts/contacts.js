@@ -8,7 +8,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 export default function DisplayContacts({navigation, route}) {
   const [contacts, setContacts] = useState([]);
   const [permissions, setPermissions] = useState(false);
-  const [filterContacts, setFilterContacts] = useState({});
+  //const [filterContacts, setFilterContacts] = useState({});
   //const [memory, setMemory] = useState([]);
 
   const call = (contact) => {
@@ -25,19 +25,26 @@ export default function DisplayContacts({navigation, route}) {
   const showContacts = async () => {
     // get all my phone contacts
     const contactList = await Contacts.getContactsAsync();
-    setContacts(contactList.data);
-  }
+    setContacts(contactList.data.sort(
+      (a, b) => {
+      if (a && a.givenName && b && b.givenName)
+      a.givenName.toLowerCase() > b.givenName.toLowerCase()
 
-const searchContacts = async (value) => {
-  const filterThrough = filterContacts.filter(contact => {
-    let lowerCaseContacts = (
-      contact.firstName + ' ' + contact.lastName ).toLowerCase();
-      let searchTermLowercase = value.toLowerCase();
-      return lowerCaseContacts.indexOf(searchTermLowercase) > -1;
+    })
+    
+    )}
+
+
+// const searchContacts = async (value) => {
+//   const filterThrough = filterContacts.filter(contact => {
+//     let lowerCaseContacts = (
+//       contact.firstName + ' ' + contact.lastName ).toLowerCase();
+//       let searchTermLowercase = value.toLowerCase();
+//       return lowerCaseContacts.indexOf(searchTermLowercase) > -1;
   
-  });
-setFilterContacts(filterThrough.data);
-}  
+//   });
+// setFilterContacts(filterThrough.data);
+// }  
 
   const getPermissions = async () => {
     // const { status } = await Permissions.askAsync(Permissions.CONTACTS);
@@ -57,10 +64,11 @@ setFilterContacts(filterThrough.data);
 
   return (
     <> 
+    
+    <SafeAreaView style={{ backgroundColor: '#ecf0f1' }}/>
      <View style={StyleSheet.container}>
    {/* <FocusAwareStatusBar barStyle="dark-content" backgroundColor="#ecf0f1" />      */}
-       <SafeAreaView style={{ backgroundColor: '#ecf0f1' }}/>
-    <TextInput 
+    {/* <TextInput 
   placeholder='Search By Name'
   placeholderTextColor='#dddddd'
   style={{
@@ -73,15 +81,21 @@ setFilterContacts(filterThrough.data);
     // borderBottomColor: '#7d90a0'
   }}
   onChangeText={value => searchContacts(value)}
-  />
-    
-       <Button title='Go Back' onPress={() => navigation.goBack()}/>
- 
-          <Button
+  /> */} 
+  
+   <Button title='Go Back' onPress={() => navigation.goBack()}/>
+
+    <TextInput
+          onChangeText={showContacts}
+          placeholder="Search"
+          style={styles.searchBar}
+        />
+
+<Button
             style={styles.button}
              onPress={showContacts}
             title="Display Contacts"
-          ></Button>
+          ></Button> 
 
         <FlatList
             data={contacts}
@@ -111,5 +125,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'red',
     margin: 10,
+  },
+  searchBar: {
+    backgroundColor: '#f0eded',
+    paddingHorizontal: 30,
+    paddingVertical: Platform.OS === 'android' ? undefined : 15,
   },
 });
