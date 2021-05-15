@@ -8,23 +8,23 @@ import { StatusBar, Image, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import { subscribeToTimer } from './src/api';
+//import { subscribeToTimer } from './src/api';
 const Stack = createStackNavigator();
 
 class App extends Component {
-constructor(props) {
-  super(props);
+// constructor(props) {
+//   super(props);
 
-  subscribeToTimer((err, timestamp) => {
-    this.setState({
-      timestamp
-    });
-  });
-}
+//   subscribeToTimer((err, timestamp) => {
+//     this.setState({
+//       timestamp
+//     });
+//   });
+// }
 
-state = {
-  timestamp: 'no timestamp yet'
-};
+// state = {
+//   timestamp: 'no timestamp yet'
+// };
 
 
 render(){
@@ -53,7 +53,7 @@ render(){
           </Stack.Navigator>
         </NavigationContainer>
         </SafeAreaProvider>
-         <Text>'This is the value of the timer timestamp:' {this.state.timestamp} </Text>
+         {/* <Text>'This is the value of the timer timestamp:' {this.state.timestamp} </Text> */}
   
 </Provider>
 
