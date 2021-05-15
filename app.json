@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./src/assets/image/favicon.png"
-    }
+    },
+    "description": "First push for counter app Gentle Ben's AZ",
+    "githubUrl": "https://github.com/stacyburris/keeptrack-gentlebens"
   }
 }
