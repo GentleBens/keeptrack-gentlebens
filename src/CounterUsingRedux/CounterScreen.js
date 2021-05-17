@@ -1,9 +1,10 @@
 import React from 'react';
-import { Text, View, StyleSheet, Button } from 'react-native';
+import { Text, View, StyleSheet, Alert } from 'react-native';
+import { Button } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
-import { increment, decrement } from '../modules/redux/counter';
+import { increment, decrement, reset} from '../modules/redux/counter';
 //import FocusAwareStatusBar from '../Focus/focus';
 //import DisplayContacts from '../DisplayContacts/contacts';
 
@@ -13,16 +14,9 @@ const CounterScreen = ({ navigation: { navigate }}) => {
 
     return (
         <View style={StyleSheet.container}>
- <Button
-        onPress={() =>
-          navigate('Contacts', { title: 'Contact List'})}
-          title="Go to Contact List"
-        
-      />  
+
  {/* <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" /> */}
          <Text style={styles.text}>People Counter: {counter}</Text>
-
-         
          <SafeAreaView style={styles.buttonsHolder}>
  
            <FloatingButton
@@ -41,6 +35,22 @@ const CounterScreen = ({ navigation: { navigate }}) => {
      
          </SafeAreaView>
 
+         <Button 
+          onPress={() => dispatch(reset())}
+          title='Reset' 
+          type='outline'        
+          />
+  
+        <Button
+        onPress={() =>
+          navigate('Charts', { title: 'Totals'})}
+          title="Go to Charts"
+          type='outline'
+        />  
+          <Button 
+          title='Total' 
+          type='outline'
+          onPress={()=> Alert.alert(`Total Count: ${counter}`)}/>
     </View>
 
     );
@@ -116,3 +126,8 @@ const styles = StyleSheet.create({
     // // useSelector hook is responsible to fetch specific reducer's state from the store
     //     // fetching counter state from custom counter reducer
     // // useDispatch hook allows for dispatch actions (i.e increment & decrement) to reducers
+
+
+          //<Image
+    //style={{width: 50, height: 30}}
+    //source={require('../assets/image/download.png')}/> 
