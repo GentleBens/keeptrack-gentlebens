@@ -4,15 +4,15 @@
 
 </h1>
 
+![Gentle Ben's UML](./src/assets/image/gentle-bens-uml.png)
+
 **Using Redux React Native**
 
 Features
 
-- Foot Traffic Counter
+- Foot Traffic Counter (+ -)
 
-- Communication / chat
-
-- Contacts List
+- Graph / hr, day, week, month, year
 
 - 2 page navigation
 
