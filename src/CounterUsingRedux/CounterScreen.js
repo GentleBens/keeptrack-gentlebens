@@ -12,6 +12,8 @@ const CounterScreen = ({ navigation: { navigate }}) => {
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
 
+
+    
     return (
         <View style={StyleSheet.container}>
 

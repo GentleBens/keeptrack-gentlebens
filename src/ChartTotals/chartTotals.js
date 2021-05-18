@@ -45,3 +45,62 @@ export default function ChartTotals({navigation, route}) {
 </>
     )
 }
+
+
+
+
+
+
+// export function editFoodItem(foodItem) {
+//     return (dispatch) => { dispatch({ type: 'EDIT_FOOD_ATTEMPT' });
+//   return fetch(`http://localhost:3000/fooditems/${foodItem.id}`, {
+//         method: 'PATCH',
+//         headers: {
+//           'Accept': 'application/json',
+//           'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify(foodItem)
+//           })
+//           .then(resp => resp.json())
+//           .then(foodItems => dispatch({ type: 'EDIT_FOOD_SUCCESS', payload: foodItems}))
+//           .catch(error => dispatch({ type: 'EDIT_FOOD_ERROR', error: error.message }));
+
+
+          /// reducers
+        
+// case 'EDIT_FOOD_ATTEMPT':
+//       return {
+//         ...state,
+//          loading: true,
+//          error: null
+//       }
+// case 'EDIT_FOOD_SUCCESS':
+//       const newFoodItems = state.foodItems.map(foodObj => foodObj.id === action.id ? {foodObj: action.payload} : foodObj)
+//     return {
+//       ...state,
+//       loading: false,
+//       error: null,
+//       foodItems: newFoodItems
+//     };
+// case 'EDIT_FOOD_ERROR':
+//       return {
+//         ...state,
+//          loading: false,
+//          error: action.error.message
+//       };
+
+
+// actions
+// incrementing = (foodObject) => {
+//     foodObject.itemnumber = foodObject.itemnumber + 1;
+//     this.props.editFoodItem(foodObject)
+//   }
+// decrementing = (foodObject) => {
+//     if(foodObject.itemnumber > 1) {
+//       foodObject.itemnumber = foodObject.itemnumber - 1;
+//       this.props.editFoodItem(foodObject);
+//     }
+//     else {
+//       this.props.removeFromCredenza(foodObject.id)
+//     }
+//   }
