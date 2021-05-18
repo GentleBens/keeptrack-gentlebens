@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, View, StyleSheet, Alert } from 'react-native';
 import { Button } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
@@ -7,13 +7,36 @@ import FloatingButton from './FloatingButton';
 import { increment, decrement, reset} from '../modules/redux/counter';
 //import FocusAwareStatusBar from '../Focus/focus';
 //import DisplayContacts from '../DisplayContacts/contacts';
+import superagent from 'superagent';
+//import { Socket } from 'socket.io-client';
+import io from 'socket.io-client';
+//const serverData = 'https://keeptrack-gentlebens.herokuapp.com/';
+
 
 const CounterScreen = ({ navigation: { navigate }}) => {
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
+    const [counterData, setCounterData] = useState([]);
+
+// const host = io.connect('https://keeptrack-gentlebens.herokuapp.com/counter', { transports: ['websocket'] });
+// host.on('connection', (data)=> {
+//   console.log('communication from server', data);
+// })
 
 
-    
+useEffect(() => {
+  getAllData();
+}, [])
+
+const getAllData = async () => {
+  console.log('inside counterscreen');
+  let herokuData = await superagent.get('https://keeptrack-gentlebens.herokuapp.com/counter')
+  .then(response => {
+    console.log('response from heroku super agent get route', response.body);
+    return response.body;
+  })
+  setCounterData(herokuData)
+}
     return (
         <View style={StyleSheet.container}>
 
