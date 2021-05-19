@@ -4,7 +4,9 @@ import { Button } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
-import { increment, decrement, reset} from '../modules/redux/counter';
+import { increment, decrement, reset, addAlert, removeAlert} from '../modules/redux/counter';
+//import Alert from '../Alerts/alert';
+
 //import FocusAwareStatusBar from '../Focus/focus';
 //import DisplayContacts from '../DisplayContacts/contacts';
 import superagent from 'superagent';
@@ -17,6 +19,7 @@ const CounterScreen = ({ navigation: { navigate }}) => {
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
     const [counterData, setCounterData] = useState([]);
+    //dispatch(addAlert('Test alert!', 'success'));
 
 // const host = io.connect('https://keeptrack-gentlebens.herokuapp.com/counter', { transports: ['websocket'] });
 // host.on('connection', (data)=> {
@@ -65,6 +68,7 @@ const getAllData = async () => {
           title='Reset' 
           type='outline'        
           />
+          
   
         <Button
         onPress={() =>
@@ -80,6 +84,8 @@ const getAllData = async () => {
 
     );
 };
+
+
 
 const styles = StyleSheet.create({
     container: {

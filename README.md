@@ -8,6 +8,8 @@
 
 **Using Redux React Native**
 
+- Redux (dispatch(action) -> reducer -> new state -> re-render
+
 Features
 
 - Foot Traffic Counter (+ -)
