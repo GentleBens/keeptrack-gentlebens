@@ -1,6 +1,6 @@
 // IMPLEMENTATION FOR ACTIONS. INCREMENT, DECREMENT & RESET OF THE COUNTER
-
-import { INCREMENT, DECREMENT, RESET, ADD_ALERT, REMOVE_ALERT } from './types';
+//, SHOW_MODAL, HIDE_ALERT
+import { INCREMENT, DECREMENT, RESET, CLOSE } from './types';
 
 export const increment = () => ({
     type: INCREMENT
@@ -9,17 +9,11 @@ export const decrement = () => ({
     type: DECREMENT
 })
 
-export const reset = (text) => ({
-     type: RESET,
-     text
-   
+export const reset = () => ({
+     type: RESET
 })
-export const addAlert = (text) => ({
-    type: ADD_ALERT,
-    text,
-
-})
-export const removeAlert = () => ({
-    type: REMOVE_ALERT
+export const close = () => ({
+    type: CLOSE
+    
 })
 // Actions are plain objects that take type and payload as object keys

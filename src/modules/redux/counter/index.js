@@ -1,7 +1,8 @@
 // IMPORT EXPORT STATEMENTS FOR ACTIONS & REDUCERS
-import { increment, decrement, reset, addAlert, removeAlert } from './actions';
+//, showModal, hideModal // , showModal, hideModal
+import { increment, decrement, reset, close } from './actions';
 import reducer from './reducers';
 
-export { increment, decrement, reset, addAlert, removeAlert };
+export { increment, decrement, reset, close};
 
 export default reducer;
