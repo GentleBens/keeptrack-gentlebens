@@ -3,5 +3,4 @@
 export const INCREMENT = 'counter/INCREMENT';
 export const DECREMENT = 'counter/DECREMENT';
 export const RESET = 'counter/RESET';
-export const ADD_ALERT = 'counter/ADD_ALERT';
-export const REMOVE_ALERT = 'counter/REMOVE_ALERT';
+export const CLOSE = 'counter/CLOSE';

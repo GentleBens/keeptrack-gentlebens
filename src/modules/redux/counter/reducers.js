@@ -1,11 +1,10 @@
 // CONTAINING STATE FOR COUNTER REDUCER AND PURE FUNCTIONS RESPONSIBLE FOR UPDATING STATE FOR THE COUNTER IN REDUX
-import { INCREMENT, DECREMENT, RESET, ADD_ALERT, REMOVE_ALERT} from './types';
+import { INCREMENT, DECREMENT, RESET, CLOSE} from './types';
 // counter starts at 0
 const initialState = {
    counter: 0
 };
 export default (state=initialState, action) => {
-    // let { type, payload } = action;
     switch (action.type) {
         case INCREMENT:
             return {
@@ -22,14 +21,11 @@ export default (state=initialState, action) => {
                         ...state,
                         counter: state.counter = 0
                     }
-                    case ADD_ALERT:
+                    case CLOSE:
                         return {
-                            ...state
+                            ...state,
+                            counter: state.counter
                         }
-                        case REMOVE_ALERT:
-                            return {
-                               ...state.filter((alert) => alert.counter !== counter) 
-                            }
                 default:
                     return state;
     }
