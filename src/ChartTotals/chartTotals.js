@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, Tab, Image } from 'react-native-elements';
 import chart1 from '../assets/image/chart1.jpeg';
 import chart2 from '../assets/image/chart2.png';
-import chart3 from '../assets/image/chart3.jpeg';
-import chart4 from '../assets/image/chart4.png';
-import chart5 from '../assets/image/chart5.png';
+// import chart3 from '../assets/image/chart3.jpeg';
+// import chart4 from '../assets/image/chart4.png';
+// import chart5 from '../assets/image/chart5.png';
 
 export default function ChartTotals({navigation, route}) {
 
@@ -23,13 +23,13 @@ export default function ChartTotals({navigation, route}) {
            </Tab>             
         <Image
         source={chart1 }
-        style={{ width: 400, height: 200 }}
+        style={{ width: 300, height: 200 }}
         />
         <Image
         source={chart2 }
-        style={{ width: 400, height: 200 }}
+        style={{ width: 300, height: 200 }}
         />
-        <Image
+        {/* <Image
         source={chart3 }
         style={{ width: 400, height: 200 }}
         />
@@ -40,7 +40,7 @@ export default function ChartTotals({navigation, route}) {
         <Image
         source={chart5 }
         style={{ width: 400, height: 200 }}
-        />
+        /> */}
 
 </>
     )
