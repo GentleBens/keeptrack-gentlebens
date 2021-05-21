@@ -1,21 +1,24 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Alert, Modal, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Alert, Modal, Pressable, Image } from 'react-native';
 import { Button } from 'react-native-elements';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
 import { increment, decrement, reset, close} from '../modules/redux/counter';
+import { createStackNavigator } from '@react-navigation/stack';
 //import Alert from '../Alerts/alert';
+//import AppleHeader from "react-native-apple-header";
 
 //import FocusAwareStatusBar from '../Focus/focus';
 //import DisplayContacts from '../DisplayContacts/contacts';
 import superagent from 'superagent';
+import App from '../../App';
 //import { Socket } from 'socket.io-client';
 //import io from 'socket.io-client';
 //const serverData = 'https://keeptrack-gentlebens.herokuapp.com/';
+const Stack = createStackNavigator();
 
-
-const CounterScreen = ({ navigation: { navigate }}) => {
+const CounterScreen = () => {
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
     const [counterData, setCounterData] = useState([]);
@@ -45,7 +48,6 @@ const getAllData = async () => {
     return (
         <View style={StyleSheet.container}>
 
- {/* <FocusAwareStatusBar barStyle="light-content" backgroundColor="#6a51ae" /> */}
          <Text style={styles.text}>People Counter: {counter}</Text>
          <SafeAreaView style={styles.buttonsHolder}>
  
@@ -63,7 +65,7 @@ const getAllData = async () => {
      
          </SafeAreaView>
          <Modal
-        animationType="slide"
+        // animationType="slide"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -71,10 +73,11 @@ const getAllData = async () => {
           setModalVisible(!modalVisible);
         }}
       >
-        <View style={styles.centeredView}>
-          <View style={styles.modalView}>
+        <View style={styles.modal}>
+          <View style={[styles.modalView, styles.innerModal]}>
             <Text style={styles.modalText}>Are you sure you want to reset counter?</Text>
             <Pressable
+            
               style={[styles.buttons, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
               onPressIn={() => dispatch(reset())}
@@ -82,6 +85,7 @@ const getAllData = async () => {
               <Text style={styles.textStyle}>Yes</Text>
             </Pressable>
             <Pressable
+             
             style={[styles.buttons, styles.buttonClose]}
              onPress={() => setModalVisible(!modalVisible)}
               onPressIn={() => dispatch(close())}
@@ -97,18 +101,14 @@ const getAllData = async () => {
       >
         <Text style={styles.textStyle}>Reset Counter</Text>
       </Pressable>
-          
-  
-        <Button
-        onPress={() =>
-          navigate('Charts', { title: 'Totals'})}
-          title="Go to Charts"
-          type='outline'
-        />  
-          <Button 
+
+          <Pressable 
           title='Total' 
-          type='outline'
-          onPress={()=> Alert.alert(`Total Count: ${counter}`)}/>
+          style={[styles.buttons, styles.buttonOpen]}
+          onPress={()=> Alert.alert(`Total Count: ${counter}`)}
+          >
+        <Text style={styles.textStyle}>Total Count</Text>
+        </Pressable>
     </View>
 
     );
@@ -118,25 +118,15 @@ const getAllData = async () => {
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
       alignItems: 'center',
-      justifyContent: 'space-between',
-   
     },
-    centeredView: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      marginTop: 22
-  
-    },
-
     buttonsHolder: {
         flexDirection: 'row',
         alignSelf: 'stretch',
         padding: 30,
         justifyContent: 'space-between',
-        alignItems: 'center'
+        alignItems: 'center',
+        // backgroundColor: 'purple'
       },
     
       addBtn: {
@@ -174,36 +164,55 @@ const styles = StyleSheet.create({
     
       text: {
         fontSize: 20,
-        paddingTop: 30,
+        paddingTop: 100, // controls the people counter paddingTop
         minWidth: 100,
         alignSelf: 'stretch',
         textAlign: 'center',
         textShadowColor: 'gray',
         textShadowOffset: { width: 0, height: 1 },
-        textShadowRadius: 3
+        textShadowRadius: 3,
+
       },
       modalView: {
-        margin: 20,
-        backgroundColor: "white",
+        marginTop: 100,
+        backgroundColor: "lightgray",
         borderRadius: 10,
         padding: 35,
-    
-        //marginHorizontal: 20,
-        //alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
           width: 0,
           height: 2
         },
       },
+      modal: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0,0,0,0.4)',
+      },
+    
+      innerModal: {
+        height: 200,
+        padding: 25,
+        borderRadius: 10,
+        backgroundColor: '#FFF',
+        shadowColor: '#000',
+        shadowOffset: {
+          width: 0,
+          height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 3.84,
+        elevation: 5,
+      },
         buttons: {
           borderRadius: 5,
-          padding: 8,
-          elevation: 2
+          padding: 10,
+          elevation: 2,
+          margin: 4
         },
         buttonOpen: {
           backgroundColor: "grey",
-          // backgroundColor: "#F194FF",
           
         },
         buttonClose: {
@@ -214,7 +223,8 @@ const styles = StyleSheet.create({
           fontWeight: "bold",
           textAlign: "center",
           margin: 3,
-          padding: 2
+          padding: 2,
+          
         },
         cancelButton: {
           marginTop: 2
@@ -223,7 +233,8 @@ const styles = StyleSheet.create({
         modalText: {
           marginBottom: 25,
           textAlign: "center",
-          flexDirection:"row", 
+          
+          // flexDirection:"row", 
         }
       
     });
