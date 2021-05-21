@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Alert, Modal, Pressable, Image } from 'react-native';
-import { Button } from 'react-native-elements';
+import { Text, View, StyleSheet, Alert, Modal, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
 import { increment, decrement, reset, close} from '../modules/redux/counter';
-import { createStackNavigator } from '@react-navigation/stack';
+import DataEntry from '../DataEntry/dataEntry';
+//import { createStackNavigator } from '@react-navigation/stack';
 //import Alert from '../Alerts/alert';
 //import AppleHeader from "react-native-apple-header";
 
 //import FocusAwareStatusBar from '../Focus/focus';
 //import DisplayContacts from '../DisplayContacts/contacts';
-import superagent from 'superagent';
-import App from '../../App';
+//import superagent from 'superagent';
+//import App from '../../App';
 //import { Socket } from 'socket.io-client';
 //import io from 'socket.io-client';
 //const serverData = 'https://keeptrack-gentlebens.herokuapp.com/';
-const Stack = createStackNavigator();
+//const Stack = createStackNavigator();
 
 const CounterScreen = () => {
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
-    const [counterData, setCounterData] = useState([]);
+   // const [counterData, setCounterData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false)
     //dispatch(addAlert('Test alert!', 'success'));
 
@@ -31,26 +31,26 @@ const CounterScreen = () => {
 // })
 
 
-useEffect(() => {
-  getAllData();
-}, [])
+// useEffect(() => {
+//   getAllCounterData();
+// }, [])
 
-const getAllData = async () => {
-  console.log('inside counterscreen');
-  let herokuData = await superagent.get('https://keeptrack-gentlebens.herokuapp.com/counter')
-  .then(response => {
-    console.log('response from heroku super agent get route', response.body);
-    return response.body;
-  })
-  setCounterData(herokuData)
-}
+// const getAllCounterData = async () => {
+//   console.log('inside counterscreen');
+//   let herokuData = await superagent.get('https://keeptrack-gentlebens.herokuapp.com/counter')
+//   .then(response => {
+//     console.log('response from heroku super agent get route', response.body);
+//     return response.body;
+//   })
+//   setCounterData(herokuData)
+// }
 
     return (
         <View style={StyleSheet.container}>
 
-         <Text style={styles.text}>People Counter: {counter}</Text>
+{/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
+         <Text style={styles.text}>Gentle Ben's Counter: {counter}</Text>
          <SafeAreaView style={styles.buttonsHolder}>
- 
            <FloatingButton
                 onPress={() => dispatch(decrement())}
                 disabled={counter <= 0}
@@ -64,6 +64,9 @@ const getAllData = async () => {
             /> 
      
          </SafeAreaView>
+
+{/* // THIS IS THE MODAL INFO AND RESET CANCEL BUTTONS // */}
+
          <Modal
         // animationType="slide"
         transparent={true}
@@ -107,8 +110,19 @@ const getAllData = async () => {
           style={[styles.buttons, styles.buttonOpen]}
           onPress={()=> Alert.alert(`Total Count: ${counter}`)}
           >
-        <Text style={styles.textStyle}>Total Count</Text>
+        <Text style={styles.textStyle}>Current Count</Text>
         </Pressable>
+
+{/* // This is for the database data // */}
+
+        {/* <Pressable 
+        style={[styles.buttons, styles.buttonClose]}
+        title='Daily'
+        onPress={counter}
+        >
+          <Text>Save Daily Totals</Text>
+          </Pressable> */}
+          <DataEntry/>
     </View>
 
     );
