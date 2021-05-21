@@ -11,6 +11,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ChartTotals from './src/ChartTotals/chartTotals';
 import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
 import Icon from 'react-native-vector-icons/Feather';
+// import DataEntry from './src/DataEntry/dataEntry';
 
 
 const Tabs = AnimatedTabBarNavigator();
@@ -34,7 +35,7 @@ function App() {
       />
       </View>
 
-    
+ 
         
           <Tabs.Navigator
            tabBarOptions={{
