@@ -20,6 +20,7 @@ import DataEntry from '../DataEntry/dataEntry';
 
 const CounterScreen = () => {
     const { counter } = useSelector(state => state?.counter);
+    // const { addCounter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
    // const [counterData, setCounterData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false)
@@ -44,7 +45,7 @@ const CounterScreen = () => {
 //   })
 //   setCounterData(herokuData)
 // }
-
+//{addCounter}
     return (
         <View style={StyleSheet.container}>
 
