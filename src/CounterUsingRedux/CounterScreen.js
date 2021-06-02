@@ -14,7 +14,8 @@ import DataEntry from '../DataEntry/dataEntry';
 //import superagent from 'superagent';
 //import App from '../../App';
 //import { Socket } from 'socket.io-client';
-//import io from 'socket.io-client';
+// import io from 'socket.io-client';
+ import SocketIOClient from 'socket.io-client';
 //const serverData = 'https://keeptrack-gentlebens.herokuapp.com/';
 //const Stack = createStackNavigator();
 
@@ -25,12 +26,32 @@ const CounterScreen = () => {
    // const [counterData, setCounterData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false)
     //dispatch(addAlert('Test alert!', 'success'));
+    // this.socket = SocketIOClient('http://localhost:80000');
+    // import openSocket from 'socket.io-client';
 
-// const host = io.connect('https://keeptrack-gentlebens.herokuapp.com/counter', { transports: ['websocket'] });
-// host.on('connection', (data)=> {
-//   console.log('communication from server', data);
-// })
 
+
+   const socket = SocketIOClient('http://localhost:3000');  
+
+   //export default socket;
+
+   const socket_init = () => {
+     console.log('connected to socket')
+   }
+   socket_init();
+
+ //const socket = SocketIOClient.connect('https://gentle-bens-socket-server.herokuapp.com/', { transports: ['websocket'] });
+    //  socket.emit('increment', 'Hi server');
+    //  socket.on('decrement', (data) => {
+    //  console.log('communication from server', data); // this will console channel 2
+ //});
+
+// let clicked = () => {
+//   const dataObj = {
+//     action: 'click'
+//   };
+//   socket.emit('channel2', dataObj);
+// }
 
 // useEffect(() => {
 //   getAllCounterData();
@@ -49,17 +70,27 @@ const CounterScreen = () => {
     return (
         <View style={StyleSheet.container}>
 
+
+  {/* <Text style={styles.text}> Socket.io with react native </Text>             
+              <Pressable onPress={() => clicked}> 
+              <Text style={styles.text}>Click me</Text>
+              </Pressable> */}
+
+
+
 {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
          <Text style={styles.text}>Gentle Ben's Counter: {counter}</Text>
          <SafeAreaView style={styles.buttonsHolder}>
            <FloatingButton
                 onPress={() => dispatch(decrement())}
+                // onPressIn={() => clicked}
                 disabled={counter <= 0}
                 type='REMOVE'
                 btnStyle={counter <= 0 ? styles.disabledRemoveBtn : styles.removeBtn}
            />
             <FloatingButton
                 onPress={() => dispatch(increment())}
+                // onPressIn={() => clicked}
                 type='ADD'
                 btnStyle={styles.addBtn}
             /> 

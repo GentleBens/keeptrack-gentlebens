@@ -4,6 +4,7 @@ import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const FloatingButton = props => {
     const { onPress, type, btnStyle, disabled } = props;
+
  return (
     <Pressable
     style={btnStyle}

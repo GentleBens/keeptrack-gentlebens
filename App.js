@@ -12,6 +12,8 @@ import ChartTotals from './src/ChartTotals/chartTotals';
 import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
 import Icon from 'react-native-vector-icons/Feather';
 // import DataEntry from './src/DataEntry/dataEntry';
+import { socket_init } from './src/CounterUsingRedux/CounterScreen';
+
 
 
 const Tabs = AnimatedTabBarNavigator();
@@ -20,8 +22,9 @@ const Tabs = AnimatedTabBarNavigator();
 
 function App() {
 
+  //socket_init(); 
    return (
-   
+
       <Provider store={store}>
   <SafeAreaProvider>
   <NavigationContainer >
