@@ -1,6 +1,6 @@
 // IMPLEMENTATION FOR ACTIONS. INCREMENT, DECREMENT & RESET OF THE COUNTER
 //, SHOW_MODAL, HIDE_ALERT
-import { INCREMENT, DECREMENT, RESET, CLOSE } from './types';
+import { INCREMENT, DECREMENT, RESET, CLOSE, MESSAGE } from './types';
 //, CLICK, REMOVE_CLICK
 
 
@@ -15,6 +15,9 @@ export const reset = () => ({
 });
 export const close = () => ({
     type: CLOSE
+});
+export const message = () => ({
+    type: MESSAGE
 });
 // For SOCKET.IO
 // export function increment(counter){

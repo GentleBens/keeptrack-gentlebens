@@ -17,7 +17,7 @@ import Icon from 'react-native-vector-icons/Fontisto';
 //import App from '../../App';
 //import { Socket } from 'socket.io-client';
 // import io from 'socket.io-client';
- import SocketIOClient from 'socket.io-client';
+// import SocketIOClient from 'socket.io-client';
 //const serverData = 'https://keeptrack-gentlebens.herokuapp.com/';
 //const Stack = createStackNavigator();
 
@@ -33,14 +33,14 @@ const CounterScreen = () => {
 
 
 
-   const socket = SocketIOClient('http://localhost:3000');  
+  //  const socket = SocketIOClient('http://localhost:3000');  
 
-   //export default socket;
+  //  //export default socket;
 
-   const socket_init = () => {
-     console.log('connected to socket')
-   }
-   socket_init();
+  //  const socket_init = () => {
+  //    console.log('connected to socket')
+  //  }
+  //  socket_init();
 
  //const socket = SocketIOClient.connect('https://gentle-bens-socket-server.herokuapp.com/', { transports: ['websocket'] });
 //      socket.emit('increment', 'Hi server');
