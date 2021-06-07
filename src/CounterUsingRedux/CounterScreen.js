@@ -43,10 +43,10 @@ const CounterScreen = () => {
    socket_init();
 
  //const socket = SocketIOClient.connect('https://gentle-bens-socket-server.herokuapp.com/', { transports: ['websocket'] });
-    //  socket.emit('increment', 'Hi server');
-    //  socket.on('decrement', (data) => {
-    //  console.log('communication from server', data); // this will console channel 2
- //});
+//      socket.emit('increment', 'Hi server');
+//      socket.on('decrement', (data) => {
+//      console.log('communication from server', data); // this will console channel 2
+//  });
 
 // let clicked = () => {
 //   const dataObj = {

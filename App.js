@@ -12,7 +12,7 @@ import ChartTotals from './src/ChartTotals/ChartTotals';
 import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
 import Icon from 'react-native-vector-icons/Feather';
 // import DataEntry from './src/DataEntry/dataEntry';
-import { socket_init } from './src/CounterUsingRedux/CounterScreen';
+// import { socket_init } from './src/CounterUsingRedux/CounterScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
