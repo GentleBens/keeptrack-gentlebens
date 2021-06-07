@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import superagent from 'superagent';
-import { Pressable, Text } from 'react-native';
+import { Pressable, Text, StyleSheet } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 const DataEntry = props => {
-
-    // const { counter } = useSelector(state => state?.counter);
-    // const dispatch = useDispatch();
      const [counterData, setCounterData] = useState([]);
     
 
@@ -44,28 +41,37 @@ const addCounter = async () => {
          console.error(err)
      })
  }
-// const deleteCounter = async (count)
-
-
-// return [counterData, getCounterData, addCounter]
   return (
 <>
-    <Pressable 
-    title='Daily'
-    onPress={getCounterData}
-    >
-      <Text>Save Daily Totals</Text>
+      <Pressable
+      title='Daily'
+      style={styles.container}
+      // onPress={saveCounterData}
+      >
+        <Text style={styles.button}>Save Daily Total</Text>
+ 
       </Pressable>
-
-<Pressable 
-title='Daily'
-onPress={addCounter}
->
-  <Text>Add Number</Text>
-  </Pressable>
   </>
   )
 
 }
+
+
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
+  button: {
+    borderRadius: 5,
+    borderWidth: 2,
+    borderColor: '#e7e7e7',
+    padding: 10,
+    elevation: 2,
+    margin: 4,
+    //backgroundColor: "transparent",
+    color: "white"
+  },
+
+});
 
 export default DataEntry;

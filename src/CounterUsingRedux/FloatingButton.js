@@ -11,7 +11,7 @@ const FloatingButton = props => {
     disabled={disabled}
     onPress={onPress}
     >
-        <Icon name={type === 'ADD' ? 'plus' : 'minus' } size={35} color='white' />
+        <Icon name={type === 'ADD' ? 'plus' : 'minus' } size={40} color='white' />
     </Pressable>   
 
     )

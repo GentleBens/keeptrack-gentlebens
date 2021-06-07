@@ -5,6 +5,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
 import { increment, decrement, reset, close} from '../modules/redux/counter';
 import DataEntry from '../DataEntry/dataEntry';
+import Icon from 'react-native-vector-icons/Fontisto';
+
 //import { createStackNavigator } from '@react-navigation/stack';
 //import Alert from '../Alerts/alert';
 //import AppleHeader from "react-native-apple-header";
@@ -79,7 +81,7 @@ const CounterScreen = () => {
 
 
 {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
-         <Text style={styles.text}>Gentle Ben's Counter: {counter}</Text>
+         <Text style={styles.text}>Current Count: {counter}</Text>
          <SafeAreaView style={styles.buttonsHolder}>
            <FloatingButton
                 onPress={() => dispatch(decrement())}
@@ -94,6 +96,7 @@ const CounterScreen = () => {
                 type='ADD'
                 btnStyle={styles.addBtn}
             /> 
+     
      
          </SafeAreaView>
 
@@ -130,32 +133,25 @@ const CounterScreen = () => {
           </View>
         </View>
       </Modal>
+
       <Pressable
-        style={[styles.buttons, styles.buttonOpen]}
+        // style={[styles.buttons, styles.buttonOpen]}
+        style={styles.undoHolder }
         onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.textStyle}>Reset Counter</Text>
+        <Icon name={'undo'} size={30} color='white'></Icon>
       </Pressable>
 
-          <Pressable 
+          {/* <Pressable 
           title='Total' 
-          style={[styles.buttons, styles.buttonOpen]}
+          style={styles.current}
           onPress={()=> Alert.alert(`Total Count: ${counter}`)}
           >
         <Text style={styles.textStyle}>Current Count</Text>
-        </Pressable>
+        </Pressable> */}
 
-{/* // This is for the database data // */}
-
-        {/* <Pressable 
-        style={[styles.buttons, styles.buttonClose]}
-        title='Daily'
-        onPress={counter}
-        >
-          <Text>Save Daily Totals</Text>
-          </Pressable> */}
           <DataEntry/>
-    </View>
+        </View>  
 
     );
 };
@@ -169,17 +165,30 @@ const styles = StyleSheet.create({
     buttonsHolder: {
         flexDirection: 'row',
         alignSelf: 'stretch',
-        padding: 30,
+        padding: 25,
         justifyContent: 'space-between',
         alignItems: 'center',
         // backgroundColor: 'purple'
       },
-    
+    undoHolder: {
+        padding: 2,
+        color: 'white',
+        // backgroundColor: 'blue',
+        height: 70,
+        width: 70,
+        marginLeft: 140,
+        marginBottom: 80,
+        borderRadius: 35,
+        borderWidth: 2,
+        borderColor: '#e7e7e7',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
       addBtn: {
-        backgroundColor: '#4CAF50',
-        height: 60,
-        width: 60,
-        borderRadius: 30,
+        // backgroundColor: '#4CAF50',
+        height: 100,
+        width: 100,
+        borderRadius: 70,
         borderWidth: 2,
         borderColor: '#e7e7e7',
         justifyContent: 'center',
@@ -187,23 +196,23 @@ const styles = StyleSheet.create({
       },
     
       removeBtn: {
-        backgroundColor: '#FF5252',
-        borderRadius: 30,
+        // backgroundColor: '#FF5252',
+        borderRadius: 40,
         borderWidth: 2,
         borderColor: '#e7e7e7',
-        height: 60,
-        width: 60,
+        height: 70,
+        width: 70,
         justifyContent: 'center',
         alignItems: 'center'
       },
     
       disabledRemoveBtn: {
-        backgroundColor: 'rgba(255, 82, 82, 0.6)',
-        borderRadius: 30,
+        backgroundColor: 'rgba(220, 220, 220, 0.2)',
+        borderRadius: 50,
         borderWidth: 2,
         borderColor: '#e7e7e7',
-        height: 60,
-        width: 60,
+        height: 80,
+        width: 80,
         justifyContent: 'center',
         alignItems: 'center'
       },
@@ -214,6 +223,7 @@ const styles = StyleSheet.create({
         minWidth: 100,
         alignSelf: 'stretch',
         textAlign: 'center',
+        color: 'white',
         textShadowColor: 'gray',
         textShadowOffset: { width: 0, height: 1 },
         textShadowRadius: 3,
