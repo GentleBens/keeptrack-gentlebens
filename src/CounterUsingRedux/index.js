@@ -13,9 +13,7 @@ let socketIoMiddleware = createSocketIoMiddleware(socket, '/httpServer');
 
 let rootReducers = combineReducers(
     { counter: counterReducer } 
-    
 );
-
 const store = applyMiddleware(socketIoMiddleware)(createStore)(rootReducers);
 store.subscribe(()=> {
     console.log('counter state', store.getState());
