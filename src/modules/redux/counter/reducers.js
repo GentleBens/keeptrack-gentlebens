@@ -1,6 +1,6 @@
 // CONTAINING STATE FOR COUNTER REDUCER AND PURE FUNCTIONS RESPONSIBLE FOR UPDATING STATE FOR THE COUNTER IN REDUX
-import { ActionSheetIOS } from 'react-native';
-import { INCREMENT, DECREMENT, RESET, CLOSE, MESSAGE} from './types';
+
+import { INCREMENT, DECREMENT, RESET, CLOSE} from './types';
 
 const initialState = {
    counter: 0
@@ -17,8 +17,6 @@ export default (state=initialState, action) => {
                     ...state,
                     counter: state.counter - 1
                 }
-                case MESSAGE:
-                    return Object.assign({}, {message: action.data});
 
                         case RESET:
                             return {

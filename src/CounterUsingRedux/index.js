@@ -8,9 +8,8 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import counterReducer from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
-let socket = io('http://localhost:3000');
-let socketIoMiddleware = createSocketIoMiddleware(socket, "/server");
-
+let socket = io('http://localhost:3000/counter');
+let socketIoMiddleware = createSocketIoMiddleware(socket, '/httpServer');
 
 let rootReducers = combineReducers(
     { counter: counterReducer } 
@@ -19,9 +18,9 @@ let rootReducers = combineReducers(
 
 const store = applyMiddleware(socketIoMiddleware)(createStore)(rootReducers);
 store.subscribe(()=> {
-    console.log('new client state', store.getState());
+    console.log('counter state', store.getState());
 });
-store.dispatch({type:'server/hello', data:'Hello!'});
+store.dispatch({type:'increment', counterReducer});
 
 export default store;
 

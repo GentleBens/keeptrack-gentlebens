@@ -7,92 +7,26 @@ import { increment, decrement, reset, close} from '../modules/redux/counter';
 import DataEntry from '../DataEntry/dataEntry';
 import Icon from 'react-native-vector-icons/Fontisto';
 
-//import { createStackNavigator } from '@react-navigation/stack';
-//import Alert from '../Alerts/alert';
-//import AppleHeader from "react-native-apple-header";
-
-//import FocusAwareStatusBar from '../Focus/focus';
-//import DisplayContacts from '../DisplayContacts/contacts';
-//import superagent from 'superagent';
-//import App from '../../App';
-//import { Socket } from 'socket.io-client';
-// import io from 'socket.io-client';
-// import SocketIOClient from 'socket.io-client';
-//const serverData = 'https://keeptrack-gentlebens.herokuapp.com/';
-//const Stack = createStackNavigator();
-
 const CounterScreen = () => {
     const { counter } = useSelector(state => state?.counter);
-    // const { addCounter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
-   // const [counterData, setCounterData] = useState([]);
     const [modalVisible, setModalVisible] = useState(false)
-    //dispatch(addAlert('Test alert!', 'success'));
-    // this.socket = SocketIOClient('http://localhost:80000');
-    // import openSocket from 'socket.io-client';
 
 
-
-  //  const socket = SocketIOClient('http://localhost:3000');  
-
-  //  //export default socket;
-
-  //  const socket_init = () => {
-  //    console.log('connected to socket')
-  //  }
-  //  socket_init();
-
- //const socket = SocketIOClient.connect('https://gentle-bens-socket-server.herokuapp.com/', { transports: ['websocket'] });
-//      socket.emit('increment', 'Hi server');
-//      socket.on('decrement', (data) => {
-//      console.log('communication from server', data); // this will console channel 2
-//  });
-
-// let clicked = () => {
-//   const dataObj = {
-//     action: 'click'
-//   };
-//   socket.emit('channel2', dataObj);
-// }
-
-// useEffect(() => {
-//   getAllCounterData();
-// }, [])
-
-// const getAllCounterData = async () => {
-//   console.log('inside counterscreen');
-//   let herokuData = await superagent.get('https://keeptrack-gentlebens.herokuapp.com/counter')
-//   .then(response => {
-//     console.log('response from heroku super agent get route', response.body);
-//     return response.body;
-//   })
-//   setCounterData(herokuData)
-// }
-//{addCounter}
     return (
         <View style={StyleSheet.container}>
-
-
-  {/* <Text style={styles.text}> Socket.io with react native </Text>             
-              <Pressable onPress={() => clicked}> 
-              <Text style={styles.text}>Click me</Text>
-              </Pressable> */}
-
-
 
 {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
          <Text style={styles.text}>Current Count: {counter}</Text>
          <SafeAreaView style={styles.buttonsHolder}>
            <FloatingButton
                 onPress={() => dispatch(decrement())}
-                // onPressIn={() => clicked}
                 disabled={counter <= 0}
                 type='REMOVE'
                 btnStyle={counter <= 0 ? styles.disabledRemoveBtn : styles.removeBtn}
            />
             <FloatingButton
                 onPress={() => dispatch(increment())}
-                // onPressIn={() => clicked}
                 type='ADD'
                 btnStyle={styles.addBtn}
             /> 
@@ -135,7 +69,6 @@ const CounterScreen = () => {
       </Modal>
 
       <Pressable
-        // style={[styles.buttons, styles.buttonOpen]}
         style={styles.undoHolder }
         onPress={() => setModalVisible(true)}
       >
