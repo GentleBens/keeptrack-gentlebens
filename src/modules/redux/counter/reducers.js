@@ -1,7 +1,7 @@
 // CONTAINING STATE FOR COUNTER REDUCER AND PURE FUNCTIONS RESPONSIBLE FOR UPDATING STATE FOR THE COUNTER IN REDUX
+
 import { INCREMENT, DECREMENT, RESET, CLOSE} from './types';
-//, CLICK, REMOVE_CLICK
-// counter starts at 0
+
 const initialState = {
    counter: 0
 };
@@ -17,26 +17,16 @@ export default (state=initialState, action) => {
                     ...state,
                     counter: state.counter - 1
                 }
-                // case CLICK: 
-                // return {
-                //     ...state,
-                //     counter: state.counter + 1       
-                // }
-                //     case REMOVE_CLICK:
-                //         return {
-                //             ...state,
-                //             counter: state.counter - 1
-                //         }
-                        case RESET:
-                            return {
-                                ...state,
-                                counter: state.counter = 0
-                            }
-                            case CLOSE:
-                                return {
-                                    ...state,
-                                    counter: state.counter
-                                }
+                case RESET:
+                    return {
+                        ...state,
+                        counter: state.counter = 0
+                    }
+                    case CLOSE:
+                        return {
+                            ...state,
+                            counter: state.counter
+                        }
                 default:
                     return state;
     }

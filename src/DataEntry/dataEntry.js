@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import superagent from 'superagent';
 import { Pressable, Text, StyleSheet } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
+
 
 const DataEntry = props => {
      const [counterData, setCounterData] = useState([]);

@@ -7,12 +7,9 @@ import store from './src/CounterUsingRedux/index';
 import { StatusBar, Image, View, StyleSheet, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-//import { Socket } from 'socket.io-client';
 import ChartTotals from './src/ChartTotals/ChartTotals';
 import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
 import Icon from 'react-native-vector-icons/Feather';
-// import DataEntry from './src/DataEntry/dataEntry';
-// import { socket_init } from './src/CounterUsingRedux/CounterScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -23,8 +20,6 @@ const Tabs = AnimatedTabBarNavigator();
 
 
 function App() {
-
-  //socket_init(); 
    return (
 
       <Provider store={store}>
