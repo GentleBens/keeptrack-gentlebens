@@ -13,11 +13,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
-
 const Tabs = AnimatedTabBarNavigator();
-
-
 
 function App() {
    return (
@@ -34,8 +30,6 @@ function App() {
         source={require('./src/assets/image/download.png')}
       />
       </View>
-{/*       
-      <View style={{flex: 1,backgroundColor: '#6ED4C8'}}> */}
       <View style={styles.container}>
 
       <LinearGradient
@@ -43,7 +37,6 @@ function App() {
         colors={['rgba(0,0,0,1)', 'transparent']}
         style={styles.background}
       />
-   
         
           <Tabs.Navigator
            tabBarOptions={{

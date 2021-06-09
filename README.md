@@ -14,7 +14,7 @@ Features
 
 - Foot Traffic Counter (+ -)
 
-- Graph / hr, day, week, month, year
+- Chart / day, week, month, year
 
 - 2 page navigation
 
