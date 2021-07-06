@@ -1,59 +1,65 @@
 import React, { useState, useEffect } from 'react';
 import superagent from 'superagent';
 import { Pressable, Text, StyleSheet } from 'react-native';
+import store from '../CounterUsingRedux/index';
 
+
+//TODO: July 6 // Take server here is my total count and send back to client and update client total count view
 
 const DataEntry = props => {
      const [counterData, setCounterData] = useState([]);
     
 
-    const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
-
+    //const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
+    const URL = 'http://localhost:3000/counter';
 
 useEffect(() => {
     getCounterData();
   }, [])
   
   const getCounterData = async () => {
-    console.log('inside counterscreen');
+    console.log('inside counter screen');
+
+    store.dispatch({type:'server/increment', obj:store.getState().counter.counter});  
     await superagent.get(URL)
     .then(response => {
-      console.log('response from heroku super agent get route', response.body);
+      console.log('response from db', response.body);
    setCounterData(response.body)
-    //   return response.body;
+
+
     })
+    // .then(updateServer())
  .catch((err) => {
      console.error(err)
  })
 }
 
-const addCounter = async () => {
-  console.log('item counter')
-//numberCounter.day = new Date();
-  await superagent.post(URL)
-  //console.log('post url', URL);
-    .then(response => {
-        console.log('post response', response.body);
- let savedCounter = response.body;
-    setCounterData(savedCounter)
-     })
-     .catch((err) => {
-         console.error(err)
-     })
- }
+// const addCounter = async () => {
+//   console.log('item counter')
+// //numberCounter.day = new Date();
+//   await superagent.post(URL)
+//   //console.log('post url', URL);
+//     .then(response => {
+//         console.log('post response', response.body);
+//  let savedCounter = response.body;
+//     setCounterData(savedCounter)
+//      })
+//      .catch((err) => {
+//          console.error(err)
+//      })
+//  }
   return (
 <>
       <Pressable
       title='Daily'
       style={styles.container}
-      // onPress={saveCounterData}
+      onPress={getCounterData}
       >
-        <Text style={styles.button}>Save Daily Total</Text>
+        <Text style={styles.button}>Show Data</Text>
  
       </Pressable>
   </>
   )
-
 }
 
 
