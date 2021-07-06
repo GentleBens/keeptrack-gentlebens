@@ -7,7 +7,7 @@ const DataEntry = props => {
      const [counterData, setCounterData] = useState([]);
     
 
-    const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
+    //const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
 
 
 useEffect(() => {
@@ -27,26 +27,26 @@ useEffect(() => {
  })
 }
 
-const addCounter = async () => {
-  console.log('item counter')
-//numberCounter.day = new Date();
-  await superagent.post(URL)
-  //console.log('post url', URL);
-    .then(response => {
-        console.log('post response', response.body);
- let savedCounter = response.body;
-    setCounterData(savedCounter)
-     })
-     .catch((err) => {
-         console.error(err)
-     })
- }
+// const addCounter = async () => {
+//   console.log('item counter')
+// //numberCounter.day = new Date();
+//   await superagent.post(URL)
+//   //console.log('post url', URL);
+//     .then(response => {
+//         console.log('post response', response.body);
+//  let savedCounter = response.body;
+//     setCounterData(savedCounter)
+//      })
+//      .catch((err) => {
+//          console.error(err)
+//      })
+//  }
   return (
 <>
       <Pressable
       title='Daily'
       style={styles.container}
-      // onPress={saveCounterData}
+      onPress={getCounterData}
       >
         <Text style={styles.button}>Save Daily Total</Text>
  
