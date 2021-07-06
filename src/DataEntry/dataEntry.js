@@ -1,27 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import superagent from 'superagent';
 import { Pressable, Text, StyleSheet } from 'react-native';
+import store from '../CounterUsingRedux/index';
 
+
+//TODO: July 6 // Take server here is my total count and send back to client and update client total count view
 
 const DataEntry = props => {
      const [counterData, setCounterData] = useState([]);
     
 
     //const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
-
+    const URL = 'http://localhost:3000/counter';
 
 useEffect(() => {
     getCounterData();
   }, [])
   
   const getCounterData = async () => {
-    console.log('inside counterscreen');
+    console.log('inside counter screen');
+
+    store.dispatch({type:'server/increment', obj:store.getState().counter.counter});  
     await superagent.get(URL)
     .then(response => {
-      console.log('response from heroku super agent get route', response.body);
+      console.log('response from db', response.body);
    setCounterData(response.body)
-    //   return response.body;
+
+
     })
+    // .then(updateServer())
  .catch((err) => {
      console.error(err)
  })
@@ -48,12 +55,11 @@ useEffect(() => {
       style={styles.container}
       onPress={getCounterData}
       >
-        <Text style={styles.button}>Save Daily Total</Text>
+        <Text style={styles.button}>Show Data</Text>
  
       </Pressable>
   </>
   )
-
 }
 
 

@@ -21,9 +21,9 @@ store.subscribe(()=> {
     
 });
 //console.log('counter Reducer', rootReducers.counterReducer)
-const updateServer = () => {
- store.dispatch({type:'server/increment', obj:store.getState().counter.counter});   
-}
+// export function updateServer() {
+ //store.dispatch({type:'server/increment', obj:store.getState().counter.counter});   
+//}
 
 
 export default store;
