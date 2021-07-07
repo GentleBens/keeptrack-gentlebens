@@ -1,26 +1,43 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-//import { createStackNavigator } from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import CounterScreen from './src/CounterUsingRedux/CounterScreen';
 //import DisplayContacts from './src/DisplayContacts/contacts';
 import store from './src/CounterUsingRedux/index';
 import { StatusBar, Image, View, StyleSheet, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import ChartTotals from './src/ChartTotals/ChartTotals';
-import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
-import Icon from 'react-native-vector-icons/Feather';
+//import { ChartTotals } from './src/ChartTotals/chartTotals';
+//import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
+//import Icon from 'react-native-vector-icons/Feather';
 import { LinearGradient } from 'expo-linear-gradient';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+//import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Tabs = AnimatedTabBarNavigator();
+// const Tabs = AnimatedTabBarNavigator();
+const Stack = createStackNavigator();
+const MyStack = () => {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+        name="CounterScreen"
+        component={CounterScreen}
+        options={{title: 'Counter Screen'}}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
 
+  )
+}
 function App() {
    return (
 
       <Provider store={store}>
   <SafeAreaProvider>
-  <NavigationContainer >
+  <NavigationContainer>
+
+  
+
 
          <StatusBar translucent backgroundColor='transparent' barStyle='light-content'/>  
   
@@ -32,15 +49,15 @@ function App() {
       </View>
       <View style={styles.container}>
 
-      <LinearGradient
+      {/* <LinearGradient
         // Background Linear Gradient
         colors={['rgba(0,0,0,1)', 'transparent']}
         style={styles.background}
-      />
+      /> */}
         
-          <Tabs.Navigator
+          {/* <Tabs.Navigator
            tabBarOptions={{
-           activeBackgroundColor: "transparent",
+             activeBackgroundColor: "transparent",
             activeTintColor: "white",
             inactiveTintColor: "#222222",
            
@@ -50,7 +67,8 @@ function App() {
 
           }}
           >
-          <Tabs.Screen 
+          */}
+          {/* <Tabs.Screen 
           name="Counter" 
           component={CounterScreen} 
           options={{
@@ -63,8 +81,9 @@ function App() {
                     color={color}              
                 />
                  )
-              }}       
-/>
+              }}        */}
+{/* /> */}
+{/* 
           <Tabs.Screen 
           name="Totals" 
           component={ChartTotals} 
@@ -79,10 +98,17 @@ function App() {
                 />
                  )
               }}  
-          />
+          /> */}
           
-          </Tabs.Navigator>
+          {/* </Tabs.Navigator>  */}
           </View>
+          <Stack.Navigator>
+        <Stack.Screen
+        name="CounterScreen"
+        component={CounterScreen}
+        options={{title: 'Counter Screen'}}
+        />
+      </Stack.Navigator>
         </NavigationContainer>
      </SafeAreaProvider>
 </Provider>
@@ -93,7 +119,7 @@ function App() {
 
   const styles = StyleSheet.create({
     container: {
-      flex: 1,
+      //flex: 1,
     // alignItems: 'center',
        justifyContent: 'center',
       // backgroundColor: 'orange',
@@ -105,13 +131,13 @@ function App() {
       left: 0,
       right: 0,
       top: 0,
-      height: 600,
+      height: 600, 
     },
-    // text: {
-    //   //backgroundColor: 'transparent',
-    //   //fontSize: 15,
-    //   //color: 'red',
-    // },
+    text: {
+      backgroundColor: 'transparent',
+      fontSize: 15,
+      color: 'red',
+    },
   });
 
 export default App;

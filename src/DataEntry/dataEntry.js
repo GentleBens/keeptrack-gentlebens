@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
     elevation: 2,
     margin: 4,
     //backgroundColor: "transparent",
-    color: "white"
+    color: "pink"
   },
 
 });
