@@ -9,12 +9,22 @@ import counterReducer from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
 let socket = io('http://localhost:3050');
+socket.on("connect", () => {
+    console.log(`Cliend ID: ${socket.id}`); // ojIckSD2jqNzOqIrAGzL
+    socket.on("sendClientInfo",() => {  
+        let infoData = {ID: socket.id, NAME: 'Client'};
+        console.log('Client: Sending ClientInfo: ' + infoData);  
+        socket.emit('userinfo', infoData);
+      });
+  });
+  
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
 let rootReducers = combineReducers(
     { counter: counterReducer }
-
-);
+    
+    );
+    console.log(`Socket ID Client: ${socket}`)
 const store = applyMiddleware(socketIoMiddleware)(createStore)(rootReducers);
 store.subscribe(()=> {
     console.log('this is my counter state', store.getState());
