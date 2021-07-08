@@ -22,9 +22,8 @@ let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
 let rootReducers = combineReducers(
     { counter: counterReducer }
-    
     );
-    console.log(`Socket ID Client: ${socket}`)
+    
 const store = applyMiddleware(socketIoMiddleware)(createStore)(rootReducers);
 store.subscribe(()=> {
     console.log('this is my counter state', store.getState());

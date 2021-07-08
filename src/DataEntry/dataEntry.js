@@ -19,8 +19,8 @@ useEffect(() => {
   
   const getCounterData = async () => {
     console.log('inside counter screen');
-
-    store.dispatch({type:'server/increment', obj:store.getState().counter.counter});  
+    //Sends the Totals to the SocketServer
+    store.dispatch({type:'server/totalUpdate', obj: store.getState().counter.counter});  
     await superagent.get(URL)
     .then(response => {
       console.log('response from db', response.body);
