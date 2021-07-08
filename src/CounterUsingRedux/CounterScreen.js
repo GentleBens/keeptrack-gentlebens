@@ -36,10 +36,10 @@ const CounterScreen = () => {
 
 {/* // THIS IS THE MODAL INFO AND RESET CANCEL BUTTONS // */}
 
-         <Modal
+         {/* <Modal
         // animationType="slide"
         transparent={true}
-        visible={modalVisible}
+        // visible={modalVisible}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
@@ -71,19 +71,19 @@ const CounterScreen = () => {
       <Pressable
         style={styles.undoHolder }
         onPress={() => setModalVisible(true)}
-      >
+        >
         <Icon name={'undo'} size={30} color='white'></Icon>
-      </Pressable>
+      </Pressable> */}
 
           {/* <Pressable 
           title='Total' 
           style={styles.current}
           onPress={()=> Alert.alert(`Total Count: ${counter}`)}
           >
-        <Text style={styles.textStyle}>Current Count</Text>
+          <Text style={styles.textStyle}>Current Count</Text>
         </Pressable> */}
 
-          <DataEntry/>
+<DataEntry/>
         </View>  
 
     );
@@ -152,7 +152,7 @@ const styles = StyleSheet.create({
     
       text: {
         fontSize: 20,
-        paddingTop: 100, // controls the people counter paddingTop
+        paddingTop: 100, //controls the people counter paddingTop
         minWidth: 100,
         alignSelf: 'stretch',
         textAlign: 'center',
