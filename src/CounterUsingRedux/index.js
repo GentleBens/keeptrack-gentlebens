@@ -15,8 +15,13 @@ socket.on("connect", () => {
         let infoData = {ID: socket.id, NAME: 'Client'};
         console.log('Client: Sending ClientInfo: ' + infoData);  
         socket.emit('userinfo', infoData);
-      });
-  });
+    });
+    socket.on('SyncTotalCounter', (data) =>{
+        let totalCount = data.totalCount;
+        console.log('Client: Recieved SyncTotalCounter.  Total Count: ' + totalCount);
+    })
+  
+});
   
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
