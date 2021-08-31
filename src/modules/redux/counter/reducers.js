@@ -3,7 +3,8 @@
 import { INCREMENT, DECREMENT, RESET, CLOSE} from './types';
 
 const initialState = {
-   counter: 0
+   counter: 0,
+   capacity: -1
 };
 export default (state=initialState, action) => {
     switch (action.type) {

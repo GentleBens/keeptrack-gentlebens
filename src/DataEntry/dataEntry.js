@@ -8,7 +8,7 @@ import store from '../CounterUsingRedux/index';
 
 const DataEntry = props => {
      const [counterData, setCounterData] = useState([]);
-    
+    const [serverTotal, setServerTotal] = useState(-1)
 
     //const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
     const URL = 'http://localhost:3000/counter';
@@ -56,7 +56,7 @@ useEffect(() => {
       style={styles.container}
       onPress={getCounterData}
       >
-        <Text style={styles.button}>Show Data</Text>
+        <Text style={styles.button}>Sync Data</Text>
  
       </Pressable>
   </>

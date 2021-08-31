@@ -7,16 +7,18 @@ import { increment, decrement, reset, close} from '../modules/redux/counter';
 import DataEntry from '../DataEntry/dataEntry';
 import Icon from 'react-native-vector-icons/Fontisto';
 
-const CounterScreen = () => {
+
+const CounterScreen = ({serverTotal}) => {
     const { counter } = useSelector(state => state?.counter);
     const dispatch = useDispatch();
     const [modalVisible, setModalVisible] = useState(false)
-
+    
 
     return (
         <View style={StyleSheet.container}>
 
 {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
+        <Text style={styles.text}>Server Capacity: {serverTotal}</Text>
          <Text style={styles.text}>Current Count: {counter}</Text>
          <SafeAreaView style={styles.buttonsHolder}>
            <FloatingButton
@@ -83,7 +85,9 @@ const CounterScreen = () => {
           <Text style={styles.textStyle}>Current Count</Text>
         </Pressable> */}
 
-<DataEntry/>
+<DataEntry
+serverTotal={serverTotal}
+/>
         </View>  
 
     );
