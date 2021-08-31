@@ -26,13 +26,15 @@ useEffect(() => {
         .then(response => {
       console.log('response from db', response.body);
    setCounterData(response.body)
-
-
     })
     // .then(updateServer())
  .catch((err) => {
      console.error(err)
  })
+}
+const socketData = async () => {
+  console.log('socket data');
+  await getCounterData();
 }
 
 // const addCounter = async () => {
@@ -58,6 +60,14 @@ useEffect(() => {
       >
         <Text style={styles.button}>Sync Data</Text>
  
+      </Pressable>
+
+      <Pressable
+      title='Socket'
+      style={styles.container}
+      onPress={socketData}
+      >
+        <Text style={styles.button}>Socket Data</Text>
       </Pressable>
   </>
   )

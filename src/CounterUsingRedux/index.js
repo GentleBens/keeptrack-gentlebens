@@ -18,9 +18,12 @@ socket.on("connect", () => {
     });
     socket.on('SyncTotalCounter', (data) =>{
         let totalCount = data.totalCount;
-        console.log('Client: Recieved SyncTotalCounter.  Total Count: ' + totalCount);
+        console.log('Client: Received SyncTotalCounter.  Total Count: ' + totalCount);
     })
-  
+    socket.on('updateClientTotals', (data) => {
+       
+        console.log('Client: Received Data updateClientTotals: ' + data);
+    })
 });
   
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
