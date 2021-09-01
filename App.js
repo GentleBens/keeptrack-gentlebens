@@ -20,9 +20,9 @@ const MyStack = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-        name="CounterScreen"
-        component={CounterScreen}
-        options={{title: 'Counter Screen'}}
+          name="CounterScreen"
+          component={CounterScreen}
+          options={{ title: 'Counter Screen' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
@@ -30,32 +30,27 @@ const MyStack = () => {
   )
 }
 function App() {
-   return (
+  return (
 
-      <Provider store={store}>
-  <SafeAreaProvider>
-  <NavigationContainer>
+    <Provider store={store}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <StatusBar translucent backgroundColor='transparent' barStyle='light-content' />
+          <View style={{ backgroundColor: 'black', paddingTop: 40, flexDirection: 'row', justifyContent: 'center' }}>
+            <Image
+              style={{ width: 80, height: 65 }}
+              source={require('./src/assets/image/download.png')}
+            />
+          </View>
+          <View style={styles.container}>
 
-  
-
-
-         <StatusBar translucent backgroundColor='transparent' barStyle='light-content'/>  
-  
-    <View style={{backgroundColor: 'black', paddingTop: 40, flexDirection:'row', justifyContent:'center'}}>
-    <Image
-        style={{ width: 80, height: 65 }}
-        source={require('./src/assets/image/download.png')}
-      />
-      </View>
-      <View style={styles.container}>
-
-      {/* <LinearGradient
+            {/* <LinearGradient
         // Background Linear Gradient
         colors={['rgba(0,0,0,1)', 'transparent']}
         style={styles.background}
       /> */}
-        
-          {/* <Tabs.Navigator
+
+            {/* <Tabs.Navigator
            tabBarOptions={{
              activeBackgroundColor: "transparent",
             activeTintColor: "white",
@@ -68,7 +63,7 @@ function App() {
           }}
           >
           */}
-          {/* <Tabs.Screen 
+            {/* <Tabs.Screen 
           name="Counter" 
           component={CounterScreen} 
           options={{
@@ -82,8 +77,8 @@ function App() {
                 />
                  )
               }}        */}
-{/* /> */}
-{/* 
+            {/* /> */}
+            {/* 
           <Tabs.Screen 
           name="Totals" 
           component={ChartTotals} 
@@ -99,49 +94,48 @@ function App() {
                  )
               }}  
           /> */}
-          
-          {/* </Tabs.Navigator>  */}
+
+            {/* </Tabs.Navigator>  */}
           </View>
           <Stack.Navigator>
-        <Stack.Screen
-        name="CounterScreen"
-        component={CounterScreen}
-        options={{title: 'Counter Screen'}}
-        />
-      </Stack.Navigator>
+            <Stack.Screen
+              name="CounterScreen"
+              component={CounterScreen}
+              options={{ title: 'Counter Screen' }}
+            />
+          </Stack.Navigator>
         </NavigationContainer>
-     </SafeAreaProvider>
-</Provider>
+      </SafeAreaProvider>
+    </Provider>
 
-    )
-  }  
+  )
+}
 
 
-  const styles = StyleSheet.create({
-    container: {
-      //flex: 1,
+const styles = StyleSheet.create({
+  container: {
+    //flex: 1,
     // alignItems: 'center',
-       justifyContent: 'center',
-      // backgroundColor: 'orange',
-      //backgroundColor: '#b22222', // red background color
-      backgroundColor: '#778899'
-    },
-    background: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      height: 600, 
-    },
-    text: {
-      backgroundColor: 'transparent',
-      fontSize: 15,
-      color: 'red',
-    },
-  });
+    justifyContent: 'center',
+    // backgroundColor: 'orange',
+    //backgroundColor: '#b22222', // red background color
+    backgroundColor: '#778899'
+  },
+  background: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    top: 0,
+    height: 600,
+  },
+  text: {
+    backgroundColor: 'transparent',
+    fontSize: 15,
+    color: 'red',
+  },
+});
 
 export default App;
 
 
 
-        
