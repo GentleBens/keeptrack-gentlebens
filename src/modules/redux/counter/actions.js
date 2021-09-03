@@ -16,10 +16,11 @@ export const reset = () => ({
 export const close = () => ({
     type: CLOSE
 });
-export const capacityUpdate = () => ({
-    type: CAPACITYUPDATE
+export const capacityUpdate = (num) => ({
+    type: CAPACITYUPDATE,
+    payload: num
 
-})
+});
 
 
 // Actions are plain objects that take type and payload as object keys

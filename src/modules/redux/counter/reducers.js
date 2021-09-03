@@ -7,7 +7,8 @@ const initialState = {
     capacity: 10
 };
 export default (state = initialState, action) => {
-    switch (action.type) {
+    let { type, payload } = action;
+    switch (type) {
         case INCREMENT:
             return {
                 ...state,
@@ -31,7 +32,7 @@ export default (state = initialState, action) => {
         case CAPACITYUPDATE:
             return {
                 ...state,
-                //capacity: payload // + updateClientTotalNum
+                capacity: payload
             }
         default:
             return state;

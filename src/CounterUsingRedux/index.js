@@ -6,6 +6,7 @@
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import counterReducer from '../modules/redux/counter';
+import { capacityUpdate, reset } from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
 let socket = io('http://localhost:3050');
@@ -23,7 +24,8 @@ socket.on("connect", () => {
     socket.on('updateClientTotals', (data) => {
         //recieved from the database server
         console.log('Client: Received Data updateClientTotals: ' + data);
-
+        store.dispatch(capacityUpdate(data))
+        store.dispatch(reset());
         //we want to set counter.capacity = data
     })
 });
