@@ -23,7 +23,6 @@ socket.on("connect", () => {
     socket.on('updateClientTotals', (data) => {
         //recieved from the database server
         console.log('Client: Received Data updateClientTotals: ' + data);
-        console.log('Capacity: ', store.getState().counter.capacity);
 
         //we want to set counter.capacity = data
     })
@@ -32,7 +31,9 @@ socket.on("connect", () => {
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
 let rootReducers = combineReducers(
-    { counter: counterReducer }
+    {
+        counter: counterReducer
+    }
 );
 
 const store = applyMiddleware(socketIoMiddleware)(createStore)(rootReducers);

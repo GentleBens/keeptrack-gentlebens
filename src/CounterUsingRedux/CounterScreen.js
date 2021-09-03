@@ -3,13 +3,15 @@ import { Text, View, StyleSheet, Alert, Modal, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
-import { increment, decrement, reset, close } from '../modules/redux/counter';
+import { increment, decrement, reset, close, capacityUpdate } from '../modules/redux/counter';
 import DataEntry from '../DataEntry/dataEntry';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 
 const CounterScreen = () => {
   const { counter } = useSelector(state => state?.counter);
+  const { capacity } = useSelector(state => state?.counter);
+
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false)
 
@@ -17,7 +19,7 @@ const CounterScreen = () => {
     <View style={StyleSheet.container}>
 
       {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
-      <Text style={styles.text}>Server Capacity: </Text>
+      <Text style={styles.text}>Server Capacity: {capacity} </Text>
       <Text style={styles.text}>Current Count: {counter}</Text>
       <SafeAreaView style={styles.buttonsHolder}>
         <FloatingButton

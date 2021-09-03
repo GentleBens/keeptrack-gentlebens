@@ -22,22 +22,13 @@ const DataEntry = props => {
     //Sends the current count of the client to the SocketServer
 
     store.dispatch({ type: 'server/totalUpdate', obj: store.getState().counter.counter });
-    //   ///  Reset the current counter here ///    
-    //   await superagent.get(URL)
-    //       .then(response => {
-    //     console.log('response from db', response.body);
-    //  setCounterData(response.body)
-    //   })
-    // .then(updateServer())
-    //  .catch((err) => {
-    //      console.error(err)
-    //  })
+
   }
   const socketData = async () => {
     console.log('socket data');
     await getCounterData();
   }
-
+  //#region 
   // const addCounter = async () => {
   //   console.log('item counter')
   // //numberCounter.day = new Date();
@@ -52,6 +43,7 @@ const DataEntry = props => {
   //          console.error(err)
   //      })
   //  }
+  //#endregion
   return (
     <>
       <Pressable

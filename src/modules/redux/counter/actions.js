@@ -1,6 +1,6 @@
 // IMPLEMENTATION FOR ACTIONS. INCREMENT, DECREMENT & RESET OF THE COUNTER
 
-import { INCREMENT, DECREMENT, RESET, CLOSE } from './types';
+import { INCREMENT, DECREMENT, RESET, CLOSE, CAPACITYUPDATE } from './types';
 
 
 
@@ -11,11 +11,15 @@ export const decrement = () => ({
     type: DECREMENT
 });
 export const reset = () => ({
-     type: RESET
+    type: RESET
 });
 export const close = () => ({
     type: CLOSE
 });
+export const capacityUpdate = () => ({
+    type: CAPACITYUPDATE
+
+})
 
 
 // Actions are plain objects that take type and payload as object keys
