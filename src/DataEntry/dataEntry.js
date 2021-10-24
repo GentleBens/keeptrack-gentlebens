@@ -52,7 +52,6 @@ const DataEntry = props => {
         onPress={getCounterData}
       >
         <Text style={styles.button}>Sync Data</Text>
-
       </Pressable>
 
       <Pressable
@@ -65,7 +64,6 @@ const DataEntry = props => {
     </>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {
