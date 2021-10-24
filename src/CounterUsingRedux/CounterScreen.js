@@ -38,10 +38,10 @@ const CounterScreen = ({serverTotal}) => {
 
 {/* // THIS IS THE MODAL INFO AND RESET CANCEL BUTTONS // */}
 
-         {/* <Modal
-        // animationType="slide"
+         <Modal
+         animationType="slide"
         transparent={true}
-        // visible={modalVisible}
+         visible={modalVisible}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
@@ -75,15 +75,15 @@ const CounterScreen = ({serverTotal}) => {
         onPress={() => setModalVisible(true)}
         >
         <Icon name={'undo'} size={30} color='white'></Icon>
-      </Pressable> */}
+      </Pressable>
 
-          {/* <Pressable 
+          <Pressable 
           title='Total' 
           style={styles.current}
           onPress={()=> Alert.alert(`Total Count: ${counter}`)}
           >
           <Text style={styles.textStyle}>Current Count</Text>
-        </Pressable> */}
+        </Pressable>
 
 <DataEntry
 serverTotal={serverTotal}

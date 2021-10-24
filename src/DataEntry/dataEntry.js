@@ -59,7 +59,6 @@ const socketData = async () => {
       onPress={getCounterData}
       >
         <Text style={styles.button}>Sync Data</Text>
- 
       </Pressable>
 
       <Pressable
@@ -72,7 +71,6 @@ const socketData = async () => {
   </>
   )
 }
-
 
 const styles = StyleSheet.create({
   container: {

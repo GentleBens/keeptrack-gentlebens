@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
       padding: 10,
       elevation: 2,
       margin: 4,
-      //backgroundColor: "transparent",
+      backgroundColor: "transparent",
       color: "white"
     },
   
