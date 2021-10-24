@@ -40,8 +40,7 @@ const CounterScreen = ({serverTotal}) => {
 
          <Modal
          animationType="slide"
-
-        transparent={true}
+         transparent={true}
          visible={modalVisible}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
@@ -72,19 +71,21 @@ const CounterScreen = ({serverTotal}) => {
       </Modal>
 
       <Pressable
-        style={styles.undoHolder }
+        style={styles.undoHolder}
         onPress={() => setModalVisible(true)}
         >
         <Icon name={'undo'} size={30} color='white'></Icon>
       </Pressable>
 
-          <Pressable 
+
+{/* Current count random bottom script/button no longer needed */}
+          {/* <Pressable 
           title='Total' 
           style={styles.current}
           onPress={()=> Alert.alert(`Total Count: ${counter}`)}
           >
           <Text style={styles.textStyle}>Current Count</Text>
-        </Pressable>
+        </Pressable> */}
 
       <DataEntry
       />
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 20,
-    paddingTop: 100, //controls the people counter paddingTop
+    paddingTop: 20, //controls the people counter paddingTop
     minWidth: 100,
     alignSelf: 'stretch',
     textAlign: 'center',
@@ -181,7 +182,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
 
   innerModal: {
@@ -226,8 +227,6 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 25,
     textAlign: "center",
-
-    // flexDirection:"row", 
   }
 
 });
