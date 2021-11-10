@@ -21,7 +21,7 @@ const DataEntry = props => {
     console.log('getCounterData (counter.counter)', store.getState().counter.counter);
     //Sends the current count of the client to the SocketServer
 
-    store.dispatch({ type: 'server/totalUpdate', obj: store.getState().counter.counter });
+    store.dispatch({ type: 'server/syncWithServer', clientCount: store.getState().counter.counter });
 
   }
   const socketData = async () => {

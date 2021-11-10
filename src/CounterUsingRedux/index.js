@@ -10,25 +10,14 @@ import { capacityUpdate, reset } from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
 let socket = io('http://localhost:3050');
+
+
 socket.on("connect", () => {
-    console.log(`Cliend ID: ${socket.id}`); // ojIckSD2jqNzOqIrAGzL
-    socket.on("sendClientInfo", () => {
-        let infoData = { ID: socket.id, NAME: 'Client' };
-        console.log('Client: Sending ClientInfo: ' + infoData);
-        socket.emit('userinfo', infoData);
-    });
-    socket.on('SyncTotalCounter', (data) => {
-        let totalCount = data.totalCount;
-        console.log('Client: Received SyncTotalCounter.  Total Count: ' + totalCount);
-    })
-    socket.on('updateClientTotals', (data) => {
-        //recieved from the database server
-        console.log('Client: Received Data updateClientTotals: ' + data);
-        store.dispatch(capacityUpdate(data))
-        store.dispatch(reset());
-        //we want to set counter.capacity = data
-    })
+    console.log(`Connected to Socket Server. Client Id: ${socket.id}`);
 });
+//All the socket listeners
+
+socket.on('serverUpdatedCount', (newCount) => console.log('[SERVER] Count:', newCount));
 
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
