@@ -17,7 +17,10 @@ socket.on("connect", () => {
 });
 //All the socket listeners
 
-socket.on('serverUpdatedCount', (newCount) => console.log('[SERVER] Count:', newCount));
+socket.on('serverUpdatedCount', (newCount) => {
+    console.log('[SERVER] Count:', newCount);
+    store.dispatch(capacityUpdate(newCount));
+});
 
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
