@@ -5,25 +5,32 @@
 
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
-import counterReducer from '../modules/redux/counter';
-import { capacityUpdate, reset } from '../modules/redux/counter';
+import allReducers from '../modules/redux/counter';
+//import { capacityUpdate, reset } from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
-import io from 'socket.io-client';
-let socket = io('http://localhost:3050');
+// import io from 'socket.io-client';
+// let socket = io('http://localhost:3050');
+
+import { socket } from '../SocketClient/socketClient.js'
 
 
-socket.on("connect", () => {
-    console.log(`Connected to Socket Server. Client Id: ${socket.id}`);
-});
-//All the socket listeners
+// socket.on("connect", () => {
+//     console.log(`Connected to Socket Server. Client Id: ${socket.id}`);
+// });
+// //All the socket listeners
 
-socket.on('serverUpdatedCount', (newCount) => console.log('[SERVER] Count:', newCount));
+// socket.on('serverUpdatedCount', (newCount) => {
+//     console.log('[SERVER] Count:', newCount);
+
+//     //How to set the capacity value from here:
+
+// });
 
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
 let rootReducers = combineReducers(
     {
-        counter: counterReducer
+        counter: allReducers
     }
 );
 

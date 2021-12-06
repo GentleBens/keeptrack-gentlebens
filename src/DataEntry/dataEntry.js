@@ -2,16 +2,16 @@ import React, { useState, useEffect } from 'react';
 import superagent from 'superagent';
 import { Pressable, Text, StyleSheet } from 'react-native';
 import store from '../CounterUsingRedux/index';
+import { useDispatch } from 'react-redux';
+
 
 
 //TODO: July 6 // Take server here is my total count and send back to client and update client total count view
 
 const DataEntry = props => {
-  const [counterData, setCounterData] = useState([]);
-  const [serverTotal, setServerTotal] = useState(-1)
 
-  //const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
-  const URL = 'http://localhost:3000/counter';
+  const dispatch = useDispatch();
+
 
   useEffect(() => {
     getCounterData();
