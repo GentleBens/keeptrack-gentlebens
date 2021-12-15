@@ -6,7 +6,7 @@
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import counterReducer from '../modules/redux/counter';
-import { capacityUpdate, reset } from '../modules/redux/counter';
+import { counter, capacityUpdate, reset } from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
 let socket = io('http://localhost:3050');
@@ -20,6 +20,7 @@ socket.on("connect", () => {
 socket.on('serverUpdatedCount', (newCount) => {
     console.log('[SERVER] Count:', newCount);
     store.dispatch(capacityUpdate(newCount));
+    store.dispatch(reset());
 });
 
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
