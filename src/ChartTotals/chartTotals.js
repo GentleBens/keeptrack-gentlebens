@@ -1,7 +1,7 @@
 import React from 'react';
+import { useEffect, useState } from 'react'
 import { Tab } from 'react-native-elements';
 import { Text, Image, View, Pressable, StyleSheet } from 'react-native';
-import chart from '../assets/image/chart.png';
 import { SimpleBarChart } from '@carbon/charts-react';
 import '@carbon/charts/styles.css'
 import store from '../CounterUsingRedux/index';
@@ -9,48 +9,55 @@ import store from '../CounterUsingRedux/index';
 
 
 export default function ChartTotals() {
-  let sampleData = {
-    data: [
-      {
-        "group": "12/12/2021",
-        "value": 10
+  useEffect(() => {
+    console.log("Sending out the GetRange");
+    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '05/28/21', endDate: '05/31/21' } });
+  }, []);
+
+  const [chartData, setChartData] = useState([]);
+
+  let chartOptions = {
+
+    "title": "Attendance",
+    "axes": {
+      "left": {
+        "mapsTo": "value"
+
       },
-      {
-        "group": "12/13/2021",
-        "value": 12
-      },
-      {
-        "group": "12/14/2021",
-        "value": 20
+      "bottom": {
+        "mapsTo": "group",
+        "scaleType": "labels"
       }
-    ],
-    options: {
-      "title": "Attendance",
-      "axes": {
-        "left": {
-          "mapsTo": "value"
-
-        },
-        "bottom": {
-          "mapsTo": "group",
-          "scaleType": "labels"
-        }
-      },
-      "height": "400px",
-      "width": "200px"
-    }
+    },
+    "height": "400px",
+    "width": "400px"
   }
-  //store.dispatch({ type: 'server/getDataRange', clientCount: store.getState().counter.counter });
 
+
+  const handleGetDateRange = async () => {
+    console.log("Sending out the GetRange");
+    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '05/28/21', endDate: '05/31/21' } });
+
+  }
+  const retrieveData = () => {
+    console.log('ChartData in Totals: ', store.getState().counter.chartData);
+    setChartData(store.getState().counter.chartData);
+  }
 
 
   return (
     <>
       <Pressable
         style={styles.container}
-      // onPress={getData}
+        onPress={handleGetDateRange}
       >
         <Text style={styles.button}>Get Totals</Text>
+      </Pressable>
+      <Pressable
+        style={styles.container}
+        onPress={retrieveData}
+      >
+        <Text style={styles.button}>GET DATA -DEVONLY-</Text>
       </Pressable>
       <Tab >
         <Tab.Item value={1} title='Day' />
@@ -59,8 +66,8 @@ export default function ChartTotals() {
 
       </Tab>
       <SimpleBarChart
-        data={sampleData.data}
-        options={sampleData.options}
+        data={store.getState().counter.chartData}
+        options={chartOptions}
       />
     </>
   )

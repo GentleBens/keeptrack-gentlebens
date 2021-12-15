@@ -5,4 +5,5 @@ export const DECREMENT = 'counter/DECREMENT';
 export const RESET = 'counter/RESET';
 export const CLOSE = 'counter/CLOSE';
 export const CAPACITYUPDATE = 'counter/CAPACITYUPDATE';
+export const CHARTDATAUPDATE = 'counter/CHARTDATAUPDATE';
 

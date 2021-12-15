@@ -1,10 +1,11 @@
 // CONTAINING STATE FOR COUNTER REDUCER AND PURE FUNCTIONS RESPONSIBLE FOR UPDATING STATE FOR THE COUNTER IN REDUX
 
-import { INCREMENT, DECREMENT, RESET, CLOSE, CAPACITYUPDATE } from './types';
+import { INCREMENT, DECREMENT, RESET, CLOSE, CAPACITYUPDATE, CHARTDATAUPDATE } from './types';
 
 const initialState = {
     counter: 0,
-    capacity: 10
+    capacity: 10,
+    chartData: []
 };
 export default (state = initialState, action) => {
     let { type, payload } = action;
@@ -33,6 +34,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 capacity: payload
+            }
+        case CHARTDATAUPDATE:
+            return {
+                ...state,
+                chartData: payload
+
             }
         default:
             return state;

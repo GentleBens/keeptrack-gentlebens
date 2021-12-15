@@ -1,6 +1,6 @@
 // IMPLEMENTATION FOR ACTIONS. INCREMENT, DECREMENT & RESET OF THE COUNTER
 
-import { INCREMENT, DECREMENT, RESET, CLOSE, CAPACITYUPDATE } from './types';
+import { INCREMENT, DECREMENT, RESET, CLOSE, CAPACITYUPDATE, CHARTDATAUPDATE } from './types';
 
 
 
@@ -20,6 +20,10 @@ export const capacityUpdate = (num) => ({
     type: CAPACITYUPDATE,
     payload: num
 
+});
+export const chartDataRange = (dataRange) => ({
+    type: CHARTDATAUPDATE,
+    payload: dataRange
 });
 
 
