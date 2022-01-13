@@ -11,8 +11,10 @@ import store from '../CounterUsingRedux/index';
 export default function ChartTotals() {
   useEffect(() => {
     console.log("Sending out the GetRange");
-    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '05/28/21', endDate: '05/31/21' } });
+    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '05/28/21', endDate: '1/12/22' } });
   }, []);
+
+
 
   const [chartData, setChartData] = useState([]);
 
@@ -33,16 +35,42 @@ export default function ChartTotals() {
     "width": "400px"
   }
 
-
+  const makeSimpleBarChart = () => {
+    return <SimpleBarChart
+      data={store.getState().counter.chartData}
+      options={chartOptions}
+    />
+  }
   const handleGetDateRange = async () => {
-    console.log("Sending out the GetRange");
-    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '05/28/21', endDate: '05/31/21' } });
-
+    console.log("Sending out the GetRange From Button");
+    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '05/28/21', endDate: '1/12/22' } });
   }
   const retrieveData = () => {
     console.log('ChartData in Totals: ', store.getState().counter.chartData);
     setChartData(store.getState().counter.chartData);
   }
+  const retrieveDayData = () => {
+    console.log("retrieveDayData");
+    dt = new Date();
+    stringDate = `${dt.getMonth()}/${dt.getDate()}/${dt.getFullYear()}`;
+    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: stringDate, endDate: stringDate } });
+
+    console.log('ChartData in (Day) Totals: ', store.getState().counter.chartData);
+    setChartData(store.getState().counter.chartData);
+  }
+
+  const evalSelection = (e) => {
+    dt = new Date();
+    stringDate = `${dt.getMonth()}/${dt.getDate()}/${dt.getFullYear()}`;
+    console.log(e.value);
+    switch (e.value) {
+      case 1:
+        store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: stringDate, endDate: stringDate } });
+        console.log('ChartData in (Day) Totals: ', store.getState().counter.chartData);
+        break;
+    }
+  }
+
 
 
   return (
@@ -59,16 +87,13 @@ export default function ChartTotals() {
       >
         <Text style={styles.button}>GET DATA -DEVONLY-</Text>
       </Pressable>
-      <Tab >
-        <Tab.Item value={1} title='Day' />
+      <Tab onchange={(e) => evalSelection(e)}>
+        <Tab.Item value={1} title='Day'>{retrieveDayData}</Tab.Item>
         <Tab.Item value={2} title='Week' />
         <Tab.Item value={3} title='Month' />
 
       </Tab>
-      <SimpleBarChart
-        data={store.getState().counter.chartData}
-        options={chartOptions}
-      />
+      {makeSimpleBarChart()}
     </>
   )
 }
