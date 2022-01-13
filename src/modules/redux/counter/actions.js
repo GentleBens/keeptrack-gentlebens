@@ -19,7 +19,6 @@ export const close = () => ({
 export const capacityUpdate = (num) => ({
     type: CAPACITYUPDATE,
     payload: num
-
 });
 export const chartDataRange = (dataRange) => ({
     type: CHARTDATAUPDATE,
