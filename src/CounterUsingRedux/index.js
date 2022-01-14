@@ -6,7 +6,7 @@
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import counterReducer from '../modules/redux/counter';
-import { counter, capacityUpdate, reset, chartDataRange } from '../modules/redux/counter';
+import { counter, capacityUpdate, reset, chartDataRange, chartDayData, chartWeekData, chartMonthData } from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
 let socket = io('http://localhost:3050');
@@ -26,6 +26,12 @@ socket.on('requestedDataRangeFromServer', (dataRange) => {
     console.log('DataRange: ', dataRange);
     store.dispatch(chartDataRange(dataRange))
 });
+socket.on('requestedChartDataFromServer', (allData) => {
+    console.log('ChartDataFromServer: ', allData);
+    store.dispatch(chartDayData(allData.day));
+    store.dispatch(chartWeekData(allData.week));
+    store.dispatch(chartMonthData(allData.month));
+})
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
 let rootReducers = combineReducers(
