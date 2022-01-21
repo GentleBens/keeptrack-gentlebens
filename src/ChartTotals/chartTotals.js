@@ -18,7 +18,7 @@ export default function ChartTotals() {
     store.dispatch({ type: 'server/getHistoricalData' });
     //setIndex(-1);
   }));
-  useEffect(() => { setIndex(-1) }, [])
+  useEffect(() => { setIndex(0) }, [])
 
   useEffect(() => {
     console.log("Index:", index);
