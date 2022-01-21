@@ -11,14 +11,14 @@ export default function ChartTotals() {
   const [index, setIndex] = useState(-1);
   const [dateRange, setDateRange] = useState({});
   const [chartData, setChartData] = useState([]);
-  //const isFocused = useIsFocused();
+  const isFocused = useIsFocused();
 
 
   useFocusEffect(React.useCallback(() => {
     store.dispatch({ type: 'server/getHistoricalData' });
     //setIndex(-1);
   }));
-  useEffect(() => { setIndex(-1) }, [])
+  useEffect(() => { setIndex(0) }, [])
 
   useEffect(() => {
     console.log("Index:", index);
@@ -143,7 +143,7 @@ export default function ChartTotals() {
         <TabView.Item><h1>Hi</h1></TabView.Item>
         <TabView.Item><h1>Arroof!</h1></TabView.Item>
       </TabView>
-      {makeSimpleBarChart()}
+      {(isFocused) ? makeSimpleBarChart() : ""}
       {/* {(chartData) ? makeSimpleBarChart() : ""} */}
     </>
   )
