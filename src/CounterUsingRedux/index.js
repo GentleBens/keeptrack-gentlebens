@@ -6,31 +6,32 @@
 
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import counterReducer from '../modules/redux/counter';
-import { capacityUpdate, reset } from '../modules/redux/counter';
+import { counter, capacityUpdate, reset, chartDataRange, chartDayData, chartWeekData, chartMonthData } from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
 let socket = io('http://localhost:3050');
-socket.on("connect", () => {
-    console.log(`Client ID: ${socket.id}`); // ojIckSD2jqNzOqIrAGzL
-    socket.on("sendClientInfo", () => {
-        let infoData = { ID: socket.id, NAME: 'Client' };
-        console.log('Client: Sending ClientInfo: ' + infoData);
-        socket.emit('userinfo', infoData);
-    });
-    socket.on('SyncTotalCounter', (data) => {
-        console.log("Data received from SyncTotalCounter", data);
-        let totalCount = data.totalCount;
-        console.log('Client: Received SyncTotalCounter.  Total Count: ' + totalCount);
-    });
-    socket.on('updateClientTotals', (data) => {
-        //recieved from the database server
-        console.log('Client: Received Data updateClientTotals: ' + data);
-        store.dispatch(capacityUpdate(data))
-        store.dispatch(reset());
-        //we want to set counter.capacity = data
-    })
-});
 
+
+socket.on("connect", () => {
+    console.log(`Connected to Socket Server. Client Id: ${socket.id}`);
+});
+//All the socket listeners
+
+socket.on('serverUpdatedCount', (newCount) => {
+    console.log('[SERVER] Count:', newCount);
+    store.dispatch(capacityUpdate(newCount));
+    store.dispatch(reset());
+});
+socket.on('requestedDataRangeFromServer', (dataRange) => {
+    console.log('DataRange: ', dataRange);
+    store.dispatch(chartDataRange(dataRange))
+});
+socket.on('requestedChartDataFromServer', (allData) => {
+    console.log('ChartDataFromServer: ', allData);
+    store.dispatch(chartDayData(allData.day));
+    store.dispatch(chartWeekData(allData.week));
+    store.dispatch(chartMonthData(allData.month));
+})
 let socketIoMiddleware = createSocketIoMiddleware(socket, 'server/');
 
 let rootReducers = combineReducers(
@@ -51,7 +52,6 @@ store.subscribe(() => {
 
 
 export default store;
-
 
 
 

@@ -8,40 +8,41 @@ import DataEntry from '../DataEntry/dataEntry';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 
-const CounterScreen = ({serverTotal}) => {
-    const { counter } = useSelector(state => state?.counter);
-    const dispatch = useDispatch();
-    const [modalVisible, setModalVisible] = useState(false)
-    
+const CounterScreen = ({ serverTotal }) => {
+  const { counter, capacity } = useSelector(state => state?.counter);
+  const dispatch = useDispatch();
+  const [modalVisible, setModalVisible] = useState(false)
 
-    return (
-        <View style={StyleSheet.container}>
 
-{/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
-        <Text style={styles.text}>Server Capacity: {serverTotal}</Text>
-         <Text style={styles.text}>Current Count: {counter}</Text>
-         <SafeAreaView style={styles.buttonsHolder}>
-           <FloatingButton
-                onPress={() => dispatch(decrement())}
-                disabled={counter <= 0}
-                type='REMOVE'
-                btnStyle={counter <= 0 ? styles.disabledRemoveBtn : styles.removeBtn}
-           />
-            <FloatingButton
-                onPress={() => dispatch(increment())}
-                type='ADD'
-                btnStyle={styles.addBtn}
-            /> 
-     
-     
-         </SafeAreaView>
+  return (
+    <View style={StyleSheet.container}>
 
-{/* // THIS IS THE MODAL INFO AND RESET CANCEL BUTTONS // */}
+      {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
+      <Text style={styles.text}>Server Capacity: {capacity}</Text>
+      <Text style={styles.text}>Current Count: {counter}</Text>
+      <SafeAreaView style={styles.buttonsHolder}>
+        <FloatingButton
+          onPress={() => dispatch(decrement())}
+          disabled={counter <= 0}
+          type='REMOVE'
+          btnStyle={counter <= 0 ? styles.disabledRemoveBtn : styles.removeBtn}
+        />
+        <FloatingButton
+          onPress={() => dispatch(increment())}
+          type='ADD'
+          btnStyle={styles.addBtn}
+        />
 
-         <Modal
-         animationType="slide"
-         transparent={true}
-         visible={modalVisible}
+
+      </SafeAreaView>
+
+      {/* // THIS IS THE MODAL INFO AND RESET CANCEL BUTTONS // */}
+
+      <Modal
+        animationType="slide"
+
+        transparent={true}
+        visible={modalVisible}
         onRequestClose={() => {
           Alert.alert("Modal has been closed.");
           setModalVisible(!modalVisible);
@@ -51,7 +52,7 @@ const CounterScreen = ({serverTotal}) => {
           <View style={[styles.modalView, styles.innerModal]}>
             <Text style={styles.modalText}>Are you sure you want to reset counter?</Text>
             <Pressable
-            
+
               style={[styles.buttons, styles.buttonClose]}
               onPress={() => setModalVisible(!modalVisible)}
               onPressIn={() => dispatch(reset())}
@@ -59,12 +60,12 @@ const CounterScreen = ({serverTotal}) => {
               <Text style={styles.textStyle}>Yes</Text>
             </Pressable>
             <Pressable
-             
-            style={[styles.buttons, styles.buttonClose]}
-             onPress={() => setModalVisible(!modalVisible)}
+
+              style={[styles.buttons, styles.buttonClose]}
+              onPress={() => setModalVisible(!modalVisible)}
               onPressIn={() => dispatch(close())}
             >
-              <Text style={ [styles.textStyle, styles.cancelButton]}>Cancel</Text>
+              <Text style={[styles.textStyle, styles.cancelButton]}>Cancel</Text>
             </Pressable>
           </View>
         </View>
@@ -73,19 +74,17 @@ const CounterScreen = ({serverTotal}) => {
       <Pressable
         style={styles.undoHolder}
         onPress={() => setModalVisible(true)}
-        >
+      >
         <Icon name={'undo'} size={30} color='white'></Icon>
       </Pressable>
 
-
-{/* Current count random bottom script/button no longer needed */}
-          {/* <Pressable 
-          title='Total' 
-          style={styles.current}
-          onPress={()=> Alert.alert(`Total Count: ${counter}`)}
-          >
-          <Text style={styles.textStyle}>Current Count</Text>
-        </Pressable> */}
+      <Pressable
+        title='Total'
+        style={styles.current}
+        onPress={() => Alert.alert(`Total Count: ${counter}`)}
+      >
+        <Text style={styles.textStyle}>Current Count</Text>
+      </Pressable>
 
       <DataEntry
       />
@@ -157,7 +156,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 20,
-    paddingTop: 20, //controls the people counter paddingTop
+    paddingTop: 40, //controls the people counter paddingTop
     minWidth: 100,
     alignSelf: 'stretch',
     textAlign: 'center',
@@ -182,7 +181,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: 'rgba(0,0,0,0.4)',
   },
 
   innerModal: {
@@ -227,6 +226,8 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 25,
     textAlign: "center",
+
+    // flexDirection:"row", 
   }
 
 });
@@ -244,4 +245,6 @@ export default CounterScreen;
           //<Image
     //style={{width: 50, height: 30}}
     //source={require('../assets/image/download.png')}/> 
+
+
 
