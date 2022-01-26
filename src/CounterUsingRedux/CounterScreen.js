@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 20,
-    paddingTop: 100, //controls the people counter paddingTop
+    paddingTop: 40, //controls the people counter paddingTop
     minWidth: 100,
     alignSelf: 'stretch',
     textAlign: 'center',
@@ -245,4 +245,6 @@ export default CounterScreen;
           //<Image
     //style={{width: 50, height: 30}}
     //source={require('../assets/image/download.png')}/> 
+
+
 

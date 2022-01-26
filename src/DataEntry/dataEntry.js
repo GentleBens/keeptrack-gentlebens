@@ -53,14 +53,6 @@ const DataEntry = props => {
       >
         <Text style={styles.button}>Sync Data</Text>
       </Pressable>
-
-      <Pressable
-        title='Socket'
-        style={styles.container}
-        onPress={socketData}
-      >
-        <Text style={styles.button}>Socket Data</Text>
-      </Pressable>
     </>
   )
 }
@@ -76,7 +68,6 @@ const styles = StyleSheet.create({
     padding: 10,
     elevation: 2,
     margin: 4,
-    //backgroundColor: "transparent",
     color: "pink"
   },
 
