@@ -245,3 +245,5 @@ export default CounterScreen;
     //style={{width: 50, height: 30}}
     //source={require('../assets/image/download.png')}/> 
 
+
+
