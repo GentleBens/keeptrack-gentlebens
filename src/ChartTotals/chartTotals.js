@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 import { Tab, TabView } from 'react-native-elements';
 import { Text, Image, View, Pressable, StyleSheet } from 'react-native';
 import { SimpleBarChart } from '@carbon/charts-react';
-import '@carbon/charts/styles.css'
+// import '@carbon/charts/styles.css'
 import store from '../CounterUsingRedux/index';
 import { useFocusEffect, useIsFocused } from '@react-navigation/native';
 
@@ -44,8 +44,6 @@ export default function ChartTotals() {
     // console.log("AllDataStore: ", store.getState().counter.chartDayData, store.getState().counter.chartMonthData, store.getState().counter.chartMonthData);
   });
 
-  //const [chartData, setChartData] = useState([]);
-
   let chartOptions = {
 
     "title": "Attendance",
@@ -65,7 +63,6 @@ export default function ChartTotals() {
 
   const makeSimpleBarChart = () => {
     return <SimpleBarChart
-      //data={store.getState().counter.chartData}
       data={chartData}
       options={chartOptions}
     />
@@ -140,8 +137,8 @@ export default function ChartTotals() {
           // evalSelection()
         }
         </TabView.Item>
-        <TabView.Item><h1>Hi</h1></TabView.Item>
-        <TabView.Item><h1>Arroof!</h1></TabView.Item>
+        <TabView.Item></TabView.Item>
+        <TabView.Item></TabView.Item>
       </TabView>
       {(isFocused) ? makeSimpleBarChart() : ""}
       {/* {(chartData) ? makeSimpleBarChart() : ""} */}

@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Text, View, StyleSheet, Alert, Modal, Pressable } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import FloatingButton from './FloatingButton';
-import { increment, decrement, reset, close, capacityUpdate } from '../modules/redux/counter';
+import { increment, decrement, reset, close } from '../modules/redux/counter';
 import DataEntry from '../DataEntry/dataEntry';
 import Icon from 'react-native-vector-icons/Fontisto';
 
 
-const CounterScreen = ({ serverTotal }) => {
+const CounterScreen = () => {
   const { counter, capacity } = useSelector(state => state?.counter);
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false)
@@ -83,7 +83,6 @@ const CounterScreen = ({ serverTotal }) => {
         style={styles.current}
         onPress={() => Alert.alert(`Total Count: ${counter}`)}
       >
-        <Text style={styles.textStyle}>Current Count</Text>
       </Pressable>
 
       <DataEntry
@@ -156,7 +155,7 @@ const styles = StyleSheet.create({
 
   text: {
     fontSize: 20,
-    paddingTop: 100, //controls the people counter paddingTop
+    paddingTop: 40, //controls the people counter paddingTop
     minWidth: 100,
     alignSelf: 'stretch',
     textAlign: 'center',
