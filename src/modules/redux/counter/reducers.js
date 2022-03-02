@@ -4,7 +4,7 @@ import { INCREMENT, DECREMENT, RESET, CLOSE, CAPACITYUPDATE, CHARTDATAUPDATE, CH
 
 const initialState = {
     counter: 0,
-    capacity: 10,
+    capacity: 0,
     chartData: [],
     dayData: [],
     weekData: [],
