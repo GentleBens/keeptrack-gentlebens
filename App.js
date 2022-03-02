@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-//import { createStackNavigator } from '@react-navigation/stack';
 import CounterScreen from './src/CounterUsingRedux/CounterScreen';
 import store from './src/CounterUsingRedux/index';
-import { StatusBar, Image, View, StyleSheet, Text } from 'react-native';
+import { AppRegistry, StatusBar, Image, View, StyleSheet} from 'react-native';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ChartTotals from './src/ChartTotals/chartTotals';
@@ -12,22 +11,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import { LinearGradient } from 'expo-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-
-//const Stack = createStackNavigator();
-// const MyStack = () => {
-//   return (
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen
-//         name="CounterScreen"
-//         component={CounterScreen}
-//         options={{title: 'Counter Screen'}}
-//         />
-//       </Stack.Navigator>
-//     </NavigationContainer>
-
-//   )
-// }
 const Tabs = AnimatedTabBarNavigator();
 function App() {
    return (
@@ -98,13 +81,6 @@ function App() {
     )
   }  
 
-    {/* <Stack.Navigator>
-        <Stack.Screen
-        name="CounterScreen"
-        component={CounterScreen}
-        options={{title: 'Counter Screen'}}
-        />
-      </Stack.Navigator> */}
 
   const styles = StyleSheet.create({
     container: {

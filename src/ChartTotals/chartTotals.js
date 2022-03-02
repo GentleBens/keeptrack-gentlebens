@@ -1,27 +1,27 @@
 import React from 'react';
 import { useEffect, useState } from 'react'
 import { Tab, TabView } from 'react-native-elements';
-import { Text, Image, View, Pressable, StyleSheet } from 'react-native';
-import { SimpleBarChart } from '@carbon/charts-react';
-// import '@carbon/charts/styles.css'
+import { Pressable, Text, StyleSheet, Dimensions } from 'react-native';
 import store from '../CounterUsingRedux/index';
 import { useFocusEffect, useIsFocused } from '@react-navigation/native';
+import { BarChart } from "react-native-chart-kit";
+const screenWidth = Dimensions.get("window").width;
 
 export default function ChartTotals() {
   const [index, setIndex] = useState(-1);
-  const [dateRange, setDateRange] = useState({});
   const [chartData, setChartData] = useState([]);
+  const [label, setLabel] = useState([]);
+  const [value, setValue] = useState([]);
   const isFocused = useIsFocused();
 
 
   useFocusEffect(React.useCallback(() => {
     store.dispatch({ type: 'server/getHistoricalData' });
-    //setIndex(-1);
+    // setIndex(-1);
   }));
   useEffect(() => { setIndex(0) }, [])
 
   useEffect(() => {
-    console.log("Index:", index);
     switch (index) {
       case 0:
         setChartData(store.getState().counter.dayData);
@@ -35,83 +35,51 @@ export default function ChartTotals() {
     }
 
     console.log("Sending out the GetRange:", chartData);
-    //evalSelection();
   });
 
   useEffect(() => {
     store.dispatch({ type: 'server/getHistoricalData' });
-    // console.log("State:", store.getState().counter);
-    // console.log("AllDataStore: ", store.getState().counter.chartDayData, store.getState().counter.chartMonthData, store.getState().counter.chartMonthData);
   });
 
-  let chartOptions = {
-
-    "title": "Attendance",
-    "axes": {
-      "left": {
-        "mapsTo": "value"
-
-      },
-      "bottom": {
-        "mapsTo": "group",
-        "scaleType": "labels"
+  const data = {
+    labels: label,
+    datasets: [
+      {
+        data: value,
       }
+    ]
+  };
+
+  const chartConfig = {
+    backgroundGradientFrom: "#1E2923",
+    backgroundGradientFromOpacity: 0,
+    backgroundGradientTo: "#08130D",
+    backgroundGradientToOpacity: 0.5,
+    color: (opacity = 1) => {
+      return `rgba(26, 255, 146, ${opacity})`;
     },
-    "height": "400px",
-    "width": "400px"
-  }
+    strokeWidth: 2, // optional, default 3
+    barPercentage: 0.5,
+    useShadowColorFromDataset: false // optional
+  };
 
-  const makeSimpleBarChart = () => {
-    return <SimpleBarChart
-      data={chartData}
-      options={chartOptions}
-    />
-  }
+
   const handleGetDateRange = async () => {
-    console.log("Sending out the GetRange From Button");
-    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '05/28/21', endDate: '1/12/22' } });
+    store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '01/15/2022', endDate: '03/01/2022' } });
+    setChartData(store.getState().counter.weekData);
+    console.log("Data from top button", chartData);
+    const chartGroup = chartData.map(chart => {
+      return chart.group;
+    });
+    setLabel(chartGroup);
+
+    const chartValue = chartData.map(chart => {
+      return chart.value;
+    });
+    setValue(chartValue);
   }
-
-  const evalSelection = () => {
-    console.log('Index: ', index);
-    let dt = new Date();
-    let stringDate = `${dt.getMonth() + 1}/${dt.getDate()}/${dt.getFullYear()}`;
-
-    switch (index) {
-      case 0:
-
-        // store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: stringDate, endDate: stringDate } });
-
-        // console.log('ChartData in (Day) Totals: ', store.getState().counter.chartData);
-
-        // setDateRange({ startDate: stringDate, endDate: stringDate });
-        //setChartData(store.getState().counter.chartData);
-
-        break;
-      case 1:
-        let endWeek = `${dt.getMonth() + 1}/${dt.getDate() + 7}/${dt.getFullYear()}`;
-        console.log("EndWeek", endWeek);
-
-        store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: stringDate, endDate: endWeek } });
-
-        console.log('ChartData in (Week) Totals: ', store.getState().counter.chartData);
-
-        setDateRange({ startDate: stringDate, endDate: endWeek });
-        //setChartData(store.getState().counter.chartData);
-
-        break;
-      case 2:
-        let month = `${dt.getMonth() + 2}/${dt.getDate()}/${dt.getFullYear()}`;
-        store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: stringDate, endDate: month } });
-        console.log('ChartData in (Month) Totals: ', store.getState().counter.chartData);
-
-        setDateRange({ startDate: stringDate, endDate: month });
-        //setChartData(store.getState().counter.chartData);
-
-        break;
-    }
-  }
-
+console.log("labels", label);
+console.log("values", value);
   return (
     <>
       <Pressable
@@ -128,27 +96,31 @@ export default function ChartTotals() {
         <Tab.Item title='Week' />
         <Tab.Item title='Month' />
       </Tab>
-
-
-
-
       <TabView value={index} onChange={setIndex}>
-        <TabView.Item>{
-          // evalSelection()
-        }
-        </TabView.Item>
+        {/* <TabView.Item></TabView.Item>
         <TabView.Item></TabView.Item>
-        <TabView.Item></TabView.Item>
+        <TabView.Item></TabView.Item> */}
       </TabView>
-      {(isFocused) ? makeSimpleBarChart() : ""}
-      {/* {(chartData) ? makeSimpleBarChart() : ""} */}
+      {/* {(isFocused) ? makeSimpleBarChart() : ""} */}
+      
+      <BarChart
+          //styles={graphStyle}
+          data={data}
+          width={screenWidth}
+          height={400}
+          fromZero={true}
+         // yAxisLabel={Clicks}
+          showValuesOnTopOfBars={true}
+          chartConfig={chartConfig}
+          verticalLabelRotation={30}
+      />
     </>
   )
 }
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+     alignItems: 'center',
   },
   button: {
     borderRadius: 5,
@@ -159,6 +131,7 @@ const styles = StyleSheet.create({
     margin: 4,
     backgroundColor: "transparent",
     color: "white"
-  },
+  }
+
 
 });
