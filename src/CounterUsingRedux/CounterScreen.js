@@ -7,16 +7,13 @@ import { increment, decrement, reset, close } from '../modules/redux/counter';
 import DataEntry from '../DataEntry/dataEntry';
 import Icon from 'react-native-vector-icons/Fontisto';
 
-
 const CounterScreen = () => {
   const { counter, capacity } = useSelector(state => state?.counter);
   const dispatch = useDispatch();
   const [modalVisible, setModalVisible] = useState(false)
 
-
   return (
     <View style={StyleSheet.container}>
-
       {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
       <Text style={styles.text}>Server Capacity: {capacity}</Text>
       <Text style={styles.text}>Current Count: {counter}</Text>
@@ -32,8 +29,6 @@ const CounterScreen = () => {
           type='ADD'
           btnStyle={styles.addBtn}
         />
-
-
       </SafeAreaView>
 
       {/* // THIS IS THE MODAL INFO AND RESET CANCEL BUTTONS // */}
@@ -76,22 +71,12 @@ const CounterScreen = () => {
       >
         <Icon name={'undo'} size={30} color='white'></Icon>
       </Pressable>
-
-      {/* <Pressable
-        title='Total'
-        style={styles.current}
-        onPress={() => Alert.alert(`Total Count: ${counter}`)}
-      >
-      </Pressable> */}
-
       <DataEntry
       />
     </View>
 
   );
 };
-
-
 
 const styles = StyleSheet.create({
   container: {
