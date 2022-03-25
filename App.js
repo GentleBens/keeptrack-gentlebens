@@ -20,7 +20,7 @@ function App() {
     <StatusBar translucent backgroundColor='transparent' barStyle='light-content'/>  
     <View style={{backgroundColor: 'black', paddingTop: 40, flexDirection:'row', justifyContent:'center'}}>
     <Image
-        style={{ width: 80, height: 65 }}
+        style={{ width: 60, height: 55 }}
         source={require('./src/assets/image/download.png')}
       />
       </View>
@@ -52,7 +52,7 @@ function App() {
                     size={size ? size : 24}
                     color={focused ? color : "#222222"}
                     focused={focused}
-                    color={color}              
+                    // color={color}              
                 />
                  )
               }}       
@@ -68,7 +68,7 @@ function App() {
                     size={size ? size : 24}
                     color={focused ? color : "#222222"}
                     focused={focused}
-                    color={color}
+                    // color={color}
                 />
                  )
               }}  
@@ -98,7 +98,7 @@ function App() {
     text: {
       backgroundColor: 'transparent',
       fontSize: 15,
-      color: 'red',
+      color: 'white',
     },
   });
 

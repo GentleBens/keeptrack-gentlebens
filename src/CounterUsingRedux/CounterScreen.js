@@ -39,8 +39,7 @@ const CounterScreen = () => {
       {/* // THIS IS THE MODAL INFO AND RESET CANCEL BUTTONS // */}
 
       <Modal
-        animationType="slide"
-
+        animationType="fade"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {
@@ -78,12 +77,12 @@ const CounterScreen = () => {
         <Icon name={'undo'} size={30} color='white'></Icon>
       </Pressable>
 
-      <Pressable
+      {/* <Pressable
         title='Total'
         style={styles.current}
         onPress={() => Alert.alert(`Total Count: ${counter}`)}
       >
-      </Pressable>
+      </Pressable> */}
 
       <DataEntry
       />
@@ -104,12 +103,10 @@ const styles = StyleSheet.create({
     padding: 25,
     justifyContent: 'space-between',
     alignItems: 'center',
-    // backgroundColor: 'purple'
   },
   undoHolder: {
     padding: 2,
     color: 'white',
-    // backgroundColor: 'blue',
     height: 70,
     width: 70,
     marginLeft: 140,
@@ -121,7 +118,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   addBtn: {
-    // backgroundColor: '#4CAF50',
     height: 100,
     width: 100,
     borderRadius: 70,
@@ -132,7 +128,6 @@ const styles = StyleSheet.create({
   },
 
   removeBtn: {
-    // backgroundColor: '#FF5252',
     borderRadius: 40,
     borderWidth: 2,
     borderColor: '#e7e7e7',
@@ -167,7 +162,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     marginTop: 100,
-    backgroundColor: "lightgray",
+    backgroundColor: "gray",
     borderRadius: 10,
     padding: 35,
     shadowColor: "#000",
@@ -180,7 +175,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(0,0,0,0.4)',
+    backgroundColor: 'rgba(0,0,0,0.5)',
   },
 
   innerModal: {
@@ -225,8 +220,6 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 25,
     textAlign: "center",
-
-    // flexDirection:"row", 
   }
 
 });

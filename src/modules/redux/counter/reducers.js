@@ -43,7 +43,6 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 chartData: payload
-                //{Day: [], Week: [], Month: []}
             }
         case CHARTDAYDATA:
             return {

@@ -41,10 +41,10 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 2,
     borderColor: '#e7e7e7',
-    padding: 10,
+    padding: 8,
     elevation: 2,
-    margin: 4,
-    color: "pink"
+    margin: 40,
+    color: "white"
   },
 
 });

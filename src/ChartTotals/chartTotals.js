@@ -1,5 +1,4 @@
-import React from 'react';
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Tab, TabView } from 'react-native-elements';
 import { Pressable, Text, StyleSheet, Dimensions } from 'react-native';
 import store from '../CounterUsingRedux/index';
@@ -12,12 +11,13 @@ export default function ChartTotals() {
   const [chartData, setChartData] = useState([]);
   const [label, setLabel] = useState([]);
   const [value, setValue] = useState([]);
+  //const [isFocused, setIsFocused] = useState(false);
   const isFocused = useIsFocused();
 
 
   useFocusEffect(React.useCallback(() => {
     store.dispatch({ type: 'server/getHistoricalData' });
-    // setIndex(-1);
+  // setIndex(-1);
   }));
   useEffect(() => { setIndex(0) }, [])
 
@@ -63,7 +63,6 @@ export default function ChartTotals() {
     useShadowColorFromDataset: false // optional
   };
 
-
   const handleGetDateRange = async () => {
     store.dispatch({ type: 'server/getDataRange', dataRange: { startDate: '01/15/2022', endDate: '03/01/2022' } });
     setChartData(store.getState().counter.weekData);
@@ -88,31 +87,41 @@ console.log("values", value);
       >
         <Text style={styles.button}>Get Totals</Text>
       </Pressable>
+
       <Tab
-        value={index}
-        onChange={setIndex}
+          value={index}
+          onChange={(e) => setIndex(e)}
+          indicatorStyle={{
+          backgroundColor: 'white',
+          height: 3,
+        }}
+        variant="primary"
       >
-        <Tab.Item title='Day' />
-        <Tab.Item title='Week' />
-        <Tab.Item title='Month' />
+        <Tab.Item
+          title="Day"
+          // titleStyle={{ fontSize: 12 }}
+          // icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
+        />
+        <Tab.Item
+          title="Month"
+          // titleStyle={{ fontSize: 12 }}
+          // icon={{ name: 'heart', type: 'ionicon', color: 'white' }}
+        />
+        <Tab.Item
+          title="Year"
+          // titleStyle={{ fontSize: 12 }}
+          // icon={{ name: 'cart', type: 'ionicon', color: 'white' }}
+        />
       </Tab>
-      <TabView value={index} onChange={setIndex}>
-        {/* <TabView.Item></TabView.Item>
-        <TabView.Item></TabView.Item>
-        <TabView.Item></TabView.Item> */}
-      </TabView>
-      {/* {(isFocused) ? makeSimpleBarChart() : ""} */}
       
       <BarChart
-          //styles={graphStyle}
           data={data}
           width={screenWidth}
-          height={400}
+          height={500}
           fromZero={true}
-         // yAxisLabel={Clicks}
           showValuesOnTopOfBars={true}
           chartConfig={chartConfig}
-          verticalLabelRotation={30}
+          verticalLabelRotation={40}
       />
     </>
   )
@@ -128,10 +137,16 @@ const styles = StyleSheet.create({
     borderColor: '#e7e7e7',
     padding: 10,
     elevation: 2,
-    margin: 4,
+    margin: 10,
     backgroundColor: "transparent",
     color: "white"
+  },
+  text: {
+    color: 'white',
+    fontSize: 20,
+    marginTop: 10,
+  },
+  tab: {
+    backgroundColor: 'transparent'
   }
-
-
 });

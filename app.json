@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "keeptrack-gentlebens",
-    "slug": "keeptrack-gentlebens",
+    "name": "gentlebens",
+    "slug": "gentlebens",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/image/adaptive-icon.png",
@@ -28,7 +28,7 @@
     "web": {
       "favicon": "./src/assets/image/favicon.png"
     },
-    "description": "Test Publish",
+    "description": "Test publish to show Richard",
     "githubUrl": "https://github.com/stacyburris/keeptrack-gentlebens"
   }
 }

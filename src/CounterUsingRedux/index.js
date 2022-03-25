@@ -21,7 +21,7 @@ socket.on('requestedDataRangeFromServer', (dataRange) => {
     store.dispatch(chartDataRange(dataRange))
 });
 socket.on('requestedChartDataFromServer', (allData) => {
-    // console.log('ChartDataFromServer: ', allData);
+    console.log('ChartDataFromServer: ', allData);
     store.dispatch(chartDayData(allData.day));
     store.dispatch(chartWeekData(allData.week));
     store.dispatch(chartMonthData(allData.month));
