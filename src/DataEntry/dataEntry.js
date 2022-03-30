@@ -9,11 +9,13 @@ const DataEntry = () => {
 
   useEffect(() => {
     getCounterData();
+    // store.dispatch({ type: 'server/getHistoricalData' });
   }, [])
 
   const getCounterData = async () => {
     //Sends the current count of the client to the SocketServer
     store.dispatch({ type: 'server/syncWithServer', clientCount: store.getState().counter.counter });
+     store.dispatch({ type: 'server/getHistoricalData' });
   }
 
   return (
