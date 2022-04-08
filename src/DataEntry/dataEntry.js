@@ -4,18 +4,13 @@ import store from '../CounterUsingRedux/index';
 
 const DataEntry = () => {
 
-  //const URL = 'https://keeptrack-gentlebens.herokuapp.com/counter';
-  //const URL = 'http://localhost:3000/counter';
-
   useEffect(() => {
     getCounterData();
-    // store.dispatch({ type: 'server/getHistoricalData' });
   }, [])
 
   const getCounterData = async () => {
     //Sends the current count of the client to the SocketServer
     store.dispatch({ type: 'server/syncWithServer', clientCount: store.getState().counter.counter });
-     store.dispatch({ type: 'server/getHistoricalData' });
   }
 
   return (

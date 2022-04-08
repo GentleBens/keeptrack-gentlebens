@@ -199,7 +199,7 @@ const styles = StyleSheet.create({
 
   },
   cancelButton: {
-    marginTop: 2
+    marginTop: 2,
 
   },
   modalText: {

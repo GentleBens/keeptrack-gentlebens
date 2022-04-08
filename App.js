@@ -51,8 +51,7 @@ function App() {
                     name="counter"
                     size={size ? size : 24}
                     color={focused ? color : "#222222"}
-                    focused={focused}
-                    // color={color}              
+                    focused={focused}          
                 />
                  )
               }}       
@@ -68,7 +67,6 @@ function App() {
                     size={size ? size : 24}
                     color={focused ? color : "#222222"}
                     focused={focused}
-                    // color={color}
                 />
                  )
               }}  
