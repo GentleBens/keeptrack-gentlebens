@@ -15,8 +15,8 @@ const CounterScreen = () => {
   return (
     <View style={StyleSheet.container}>
       {/* // THIS IS THE COUNTER BUTTONS AND COUNTER HEADER // */}
-      <Text style={styles.text}>Server Capacity: {capacity}</Text>
-      <Text style={styles.text}>Current Count: {counter}</Text>
+      <Text style={styles.text}>Total Capacity: {capacity}</Text>
+      <Text style={styles.text}>Counter: {counter}</Text>
       <SafeAreaView style={styles.buttonsHolder}>
         <FloatingButton
           onPress={() => dispatch(decrement())}
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
   buttonsHolder: {
     flexDirection: 'row',
     alignSelf: 'stretch',
-    padding: 25,
+    padding: 40,
     justifyContent: 'space-between',
     alignItems: 'center',
   },
@@ -94,67 +94,67 @@ const styles = StyleSheet.create({
     color: 'white',
     height: 70,
     width: 70,
-    marginLeft: 140,
-    marginBottom: 80,
+    marginLeft: 160,
+    marginBottom: 30,
     borderRadius: 35,
-    borderWidth: 2,
+    borderWidth: 2.3,
     borderColor: '#e7e7e7',
     justifyContent: 'center',
     alignItems: 'center',
   },
   addBtn: {
-    height: 100,
-    width: 100,
+    height: 110,
+    width: 110,
     borderRadius: 70,
-    borderWidth: 2,
+    borderWidth: 2.5,
     borderColor: '#e7e7e7',
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   removeBtn: {
-    borderRadius: 40,
-    borderWidth: 2,
+    borderRadius: 50,
+    borderWidth: 2.5,
     borderColor: '#e7e7e7',
-    height: 70,
-    width: 70,
+    height: 90,
+    width: 90,
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   disabledRemoveBtn: {
-    backgroundColor: 'rgba(220, 220, 220, 0.2)',
+    backgroundColor: 'rgba(220, 220, 220, 0.3)',
     borderRadius: 50,
-    borderWidth: 2,
+    borderWidth: 2.5,
     borderColor: '#e7e7e7',
-    height: 80,
-    width: 80,
+    height: 82,
+    width: 82,
     justifyContent: 'center',
     alignItems: 'center'
   },
 
   text: {
-    fontSize: 20,
+    fontSize: 25,
     paddingTop: 40, //controls the people counter paddingTop
-    minWidth: 100,
-    alignSelf: 'stretch',
+  //  minWidth: 100,
+   //alignSelf: 'stretch',
     textAlign: 'center',
     color: 'white',
-    textShadowColor: 'gray',
-    textShadowOffset: { width: 0, height: 1 },
-    textShadowRadius: 3,
+  //   textShadowColor: 'gray',
+  //  textShadowOffset: { width: 0, height: 1 },
+  //  textShadowRadius: 3,
 
   },
   modalView: {
     marginTop: 100,
-    backgroundColor: "gray",
-    borderRadius: 10,
-    padding: 35,
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
+    //backgroundColor: "gray",
+   // borderRadius: 10,
+   // padding: 5,
+    //shadowColor: "#000",
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2
+    // },
   },
   modal: {
     flex: 1,
@@ -170,12 +170,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF',
     shadowColor: '#000',
     shadowOffset: {
-      width: 0,
+      width: 2,
       height: 2,
     },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    // elevation: 5,
   },
   buttons: {
     borderRadius: 5,
@@ -184,14 +184,14 @@ const styles = StyleSheet.create({
     margin: 4
   },
   buttonOpen: {
-    backgroundColor: "grey",
+    backgroundColor: "white",
 
   },
   buttonClose: {
-    backgroundColor: "#2196F3",
+    backgroundColor: "#e8d272",
   },
   textStyle: {
-    color: "white",
+    color: "black",
     fontWeight: "bold",
     textAlign: "center",
     margin: 3,
@@ -205,6 +205,7 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 25,
     textAlign: "center",
+    fontWeight: "bold",
   }
 
 });

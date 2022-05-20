@@ -34,21 +34,25 @@ export default function ChartTotals() {
   }, [isFocused]);
 
   const chartConfig = {
-    backgroundGradientFrom: "#1E2923",
-    backgroundGradientFromOpacity: 0,
-   backgroundGradientTo: "#08130D",
-    backgroundGradientToOpacity: 0.4,
-    color: (opacity = 1) => {
+    backgroundGradientFrom: "#2e8b57",
+   backgroundGradientFromOpacity: 0,
+   backgroundGradientTo: "#2e8b57",
+    backgroundGradientToOpacity: 0,
+    //2e8b57",
+  //   color: (opacity = 1) => {
+  //     return `rgba(189, 177, 125, ${opacity})`;
+  //  },
+  // dotted vertical lines on chart
+   color: (opacity = 1) => {
       return `rgba(255,255,255, ${opacity})`;
    },
-  //  color: () => {
-  //     return `rgba(255,255,255)`;
-  //  },
     labelColor: () => {
-      return `rgba(255,255,255)`;
+      //return `rgba(0, 0, 0, 0.5)`; // black
+      return `rgba(255,255,255)`; // white
+   
     },
     //fillShadowGradient: `rgba(1, 122, 205, 1)`,
-    fillShadowGradientOpacity: 1,
+    fillShadowGradientOpacity: 2,
     strokeWidth: 2, // optional, default 3
     barPercentage: 0.5,
     useShadowColorFromDataset: false, // optional
@@ -78,7 +82,6 @@ export default function ChartTotals() {
         }
       ]
     };
-    console.log("bar chart function", barChartFunc);
     return (
       <BarChart
     data={data}
@@ -106,7 +109,7 @@ export default function ChartTotals() {
       >
         <Tab.Item
           title="Day"
-           //titleStyle={{ fontSize: 16, color: 'white' }}
+           //titleStyle={{ fontSize: 20, color: 'white' }}
            //icon={{ name: 'timer', type: 'ionicon', color: 'white' }}
         />
         <Tab.Item

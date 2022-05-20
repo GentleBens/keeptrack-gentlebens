@@ -2,13 +2,12 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import CounterScreen from './src/CounterUsingRedux/CounterScreen';
 import store from './src/CounterUsingRedux/index';
-import { AppRegistry, StatusBar, Image, View, StyleSheet} from 'react-native';
+import { StatusBar, Image, View, StyleSheet} from 'react-native';
 import { Provider } from 'react-redux';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import ChartTotals from './src/ChartTotals/chartTotals';
 import { AnimatedTabBarNavigator } from "react-native-animated-nav-tab-bar";
 import Icon from 'react-native-vector-icons/Feather';
-import { LinearGradient } from 'expo-linear-gradient';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tabs = AnimatedTabBarNavigator();
@@ -17,27 +16,22 @@ function App() {
   <Provider store={store}>
   <SafeAreaProvider>
   <NavigationContainer>
-    <StatusBar translucent backgroundColor='transparent' barStyle='light-content'/>  
-    <View style={{backgroundColor: 'black', paddingTop: 40, flexDirection:'row', justifyContent:'center'}}>
+    <StatusBar translucent backgroundColor='transparent'/> 
+    <View style={{backgroundColor: '#f2f2f7', paddingTop: 50, paddingBottom: 5, flexDirection:'row', justifyContent:'center'}}>
     <Image
-        style={{ width: 60, height: 55 }}
-        source={require('./src/assets/image/download.png')}
+        style={{ width: 65, height: 50 }}
+        source={require('./src/assets/image/gblogo.jpg')}
       />
       </View>
       <View style={styles.container}>
-      <LinearGradient
-       Background Linear Gradient
-        colors={['rgba(0,0,0,1)', 'transparent']}
-        style={styles.background}
-      />
           <Tabs.Navigator
            tabBarOptions={{
-             activeBackgroundColor: "transparent",
-            activeTintColor: "white",
-            inactiveTintColor: "#222222",
+            activeBackgroundColor: "transparent",
+            activeTintColor: "black",
+            inactiveTintColor: "white",
           }}
           appearance={{
-            tabBarBackground: '#778899',
+            tabBarBackground: "#f2f2f7",
 
           }}
           >
@@ -50,7 +44,7 @@ function App() {
                 <MaterialCommunityIcons
                     name="counter"
                     size={size ? size : 24}
-                    color={focused ? color : "#222222"}
+                    color={focused ? color : "black"}
                     focused={focused}          
                 />
                  )
@@ -65,7 +59,7 @@ function App() {
                 <Icon
                     name="pie-chart"
                     size={size ? size : 24}
-                    color={focused ? color : "#222222"}
+                    color={focused ? color : "black"}
                     focused={focused}
                 />
                  )
@@ -84,19 +78,8 @@ function App() {
     container: {
       flex: 1,
       justifyContent: 'center',
-      backgroundColor: '#778899'
-    },
-    background: {
-      position: 'absolute',
-      left: 0,
-      right: 0,
-      top: 0,
-      height: 300, 
-    },
-    text: {
-      backgroundColor: 'transparent',
-      fontSize: 15,
-      color: 'white',
+     backgroundColor: "#4692c2"
+      
     },
   });
 
