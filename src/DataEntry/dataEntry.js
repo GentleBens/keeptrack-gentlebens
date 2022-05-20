@@ -20,7 +20,7 @@ const DataEntry = () => {
         style={styles.container}
         onPress={getCounterData}
       >
-        <Text style={styles.button}>Sync Data</Text>
+        <Text style={styles.button}>Save Count</Text>
       </Pressable>
     </>
   )
@@ -34,9 +34,9 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderWidth: 2,
     borderColor: '#e7e7e7',
-    padding: 8,
+    padding: 10,
     elevation: 2,
-    margin: 40,
+    margin: 30,
     color: "white"
   },
 

@@ -3,13 +3,14 @@ import counterReducer from '../modules/redux/counter';
 import { capacityUpdate, reset, chartDataRange, chartDayData, chartWeekData, chartMonthData } from '../modules/redux/counter';
 import createSocketIoMiddleware from 'redux-socket.io';
 import io from 'socket.io-client';
-let socket = io('http://localhost:3050');
+
+let socket = io('https://keeptrack-gentlebens.herokuapp.com/');
 
 socket.on("connect", () => {
     console.log(`Connected to Socket Server. Client Id: ${socket.id}`);
 });
-//All the socket listeners
 
+// All the socket listeners
 socket.on('serverUpdatedCount', (newCount) => {
     store.dispatch(capacityUpdate(newCount));
     store.dispatch(reset());
@@ -31,14 +32,6 @@ let rootReducers = combineReducers(
 );
 
 const store = applyMiddleware(socketIoMiddleware)(createStore)(rootReducers);
-store.subscribe(() => {
-     //console.log('this is my counter state', store.getState());
-
-});
-//console.log('counter Reducer', rootReducers.counterReducer)
-// export function updateServer() {
-//store.dispatch({type:'server/increment', obj:store.getState().counter.counter});   
-//}
 
 
 export default store;
